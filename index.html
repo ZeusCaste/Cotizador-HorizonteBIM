@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario de registro con múltiples pasos</title>
+    <link rel="stylesheet" href="css/app2.css">
+</head>
+<body>
+    <div class="root">
+        <form action="" class="form-register" id="cotizar" name="cotizar">
+            <div class="form-register__header">
+                <ul class="progressbar">
+                    <li class="progressbar__option active">paso 1</li>
+                    <li class="progressbar__option">paso 2</li>
+                    <li class="progressbar__option">paso 3</li>
+                </ul>
+                <h1 class="form-register__title">Cotizador BIM</h1>
+            </div>
+            <div class="form-register__body">
+                <div class="step active" id="step-1">
+                    <div class="step__header">
+                        <h2 class="step__title">Tipo de edifiación</h2>
+                    </div>
+                    <div class="step__body">
+                        <select class="step__select" name="tipoedif" onchange="showContent();" id="tipoedif">
+                            <option value="">- Seleccionar -</option>
+                            <option value="1">Edificación Nueva</option>
+                            <option value="2">Edificiación Existente</option>
+                          </select>
+                    
+                    <div class="form-group" id="ENueva" style="display: none;">
+                        <table>
+                          <tr>
+                              <td>
+                                <label class="label_font">Edificación #</label><br>
+                                <input type="radio" value="viviendaFa" name="edificacion" id="viviendaFa"/>  Vivienda Familiar<br>
+                                <input type="radio" value="viviendaAd" name="edificacion" id="viviendaAd"/>  Vivienda Adosada<br>
+                                <input type="radio" value="viviendaMul" name="edificacion" id="viviendaMul"/>    Vivienda Multifamiliar<br>
+                                <input type="radio" value="viviendaRes" name="edificacion" id="viviendaRes"/>    Vivienda Residencial<br>
+                                <input type="radio" value="ofiLoc" name="edificacion" id="ofiLoc"/>  Oficinas y Locales<br>
+                                <input type="radio" value="comercial" name="edificacion" id="comercial"/>    Comercial<br>
+                                <input type="radio" value="admin" name="edificacion" id="admin"/>    Administrativo<br>
+                                <input type="radio" value="estacionamientos" name="edificacion" id="estacionamientos"/>  Estacionamientos<br>
+                                <input type="radio" value="publica" name="edificacion" id="publica"/>    Pública concurrencia<br>
+                                <input type="radio" value="docencia" name="edificacion" id="docencia"/>  Docencia<br>
+                                <input type="radio" value="salud" name="edificacion" id="salud"/>    Salud<br>
+                                <input type="radio" value="industrial" name="edificacion" id="industrial"/>  Industrial<br>
+                              </td>
+                              <td>
+                                <label class="label_font">Proyectos y/o Estudios:</label><br>
+                                <input type="checkbox" value="arqui" class="acb" name="acheckbox[]" id="arqui"/>  Arquitectura<br>
+                                <input type="checkbox" value="estructura" class="acb" name="acheckbox[]" id="estructura"/>    Estructura<br>
+                                <input type="checkbox" value="insHidra" class="acb" name="acheckbox[]" id="insHidra"/>    Instalalación hidráulica<br>
+                                <input type="checkbox" value="insSani" class="acb" name="acheckbox[]" id="insSani"/>  Instalación sanitaria<br>
+                                <input type="checkbox" value="insElec" class="acb" name="acheckbox[]" id="insElec"/>  Instalación eléctrica<br>
+                                <input type="checkbox" value="mecanica" class="acb" name="acheckbox[]" id="mecanica"/>    Mecánica de suelos<br>
+                                <input type="checkbox" value="cambioSuelo" class="acb" name="acheckbox[]" id="cambioSuelo"/>  Cambio de uso de suelo<br>
+                              </td>
+                          </tr>
+                        </table>
+                        
+                     </div>
+
+                     <div class="form-group" id="EExistente" style="display: none;">
+                      <table>
+                        <tr>
+                            <td >
+                              <label class="label_font">Estado Actual:</label><br>
+                              <input type="checkbox" value="arqui" class="acb" name="acheckbox[]" id="arqui"/> Arquitectura<br>
+                              <input type="checkbox" value="estructura" class="acb" name="acheckbox[]" id="estructura"/> Estructura<br>
+                              <input type="checkbox" value="insHidra" class="acb" name="acheckbox[]" id="insHidra"/> Instalación hidráulica<br>
+                              <input type="checkbox" value="insSani" class="acb" name="acheckbox[]" id="insSani"/> Instalación sanitaria<br>
+                            </td>
+                            <td >
+                              <label class="label_font">Servicios:</label><br>
+                              <input type="checkbox" value="reconstruccion" class="acb" name="acheckbox[]" id="reconstruccion"/> Reconstrucción<br>
+                              <input type="checkbox" value="remodelacion" class="acb" name="acheckbox[]" id="remodelacion"/> Remodelación<br>
+                              <input type="checkbox" value="dictamen" class="acb" name="acheckbox[]" id="dictamen"/> Dictamen de seguridad estructural<br>
+                              <input type="checkbox" value="mecanica" class="acb" name="acheckbox[]" id="mecanica"/> Mecánica de suelos<br>
+                              <input type="checkbox" value="cambioSuelo" class="acb" name="acheckbox[]" id="cambioSuelo"/> Cambio de uso de suelo<br>
+                            </td>
+                        </tr>
+                      </table>
+                      
+                    </div>
+                    <div class="step__footer">
+                        <button type="button" class="step__button step__button--next" data-to_step="2" data-step="1" onclick="Step1();">Siguiente</button>
+                    </div>
+                </div>
+            </div>
+                <div class="step" id="step-2">
+                    <div class="step__header">
+                        <h2 class="step__title">Datos del proyecto</h2>
+                    </div>
+                    <div class="step__body">
+                        <label class="label_font">Ubicación del proyecto</label>
+                        <input type="text" placeholder="P.ej. Calle 6 No. 517 , Col." class="step__input">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label class="label_font">Ciudad</label>
+                                    <input type="text" placeholder="P.ej. Monterrey" class="step__input">
+                                </td>
+                                <td>
+                                    <label class="label_font">Estado</label>
+                                    <input type="tel" placeholder="P.ej. Nuevo Leon" class="step__input">
+                                </td>
+                            </tr>
+                        </table>
+                        <label class="label_font">C.P. / Código Postal</label>
+                        <input type="tel" placeholder="P.ej. 03400" class="step__input">
+                        <br><p><h3>Áreas del proyecto</h3></p><br>
+                        <label></label>
+                        <label></label>
+                        <div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label class="label_font">Área de planta baja (m2)</label>
+                                    <input type="text" placeholder="Introduce el área en m2" class="step__input">
+                                </td>
+                                <td>
+                                    <label class="label_font">Número de niveles tipo</label>
+                                    <input type="text" placeholder="P.ej. 2" class="step__input">
+                                </td>
+                                <td>
+                                    <label class="label_font">Área del nivel tipo (m2)</label>
+                                    <input type="tel" placeholder="P.ej. 100" class="step__input">
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                        <div>
+                            <table>
+                              <tr>
+                                  <td>
+                                    <label class="label_font">Accesibilidad: </label><br>
+                                    <input type="radio" value="" name="accesibilidad" id=""/>Muy Buena<br>
+                                    <input type="radio" value="" name="accesibilidad" id=""/>Buena<br>
+                                    <input type="radio" value="" name="accesibilidad" id=""/>Normal<br>
+                                    <input type="radio" value="" name="accesibilidad" id=""/>Difícil<br>
+                                    <input type="radio" value="" name="accesibilidad" id=""/>Muy difícil<br>
+                                  </td>
+                                  <td>
+                                    <label class="label_font">Topografía: </label><br>
+                                    <input type="radio" value="" name="topografia" id=""/>Plana<br>
+                                    <input type="radio" value="" name="topografia" id=""/>Con desnivel mínimo<br>
+                                    <input type="radio" value="" name="topografia" id=""/>Con desnivel pronunciado<br>
+                                    <input type="radio" value="" name="topografia" id=""/>Accidentada<br>
+                                    <input type="radio" value="" name="topografia" id=""/>Muy accidentada<br>
+                                  </td>
+                                  <td>
+                                    <label class="label_font">Ubicación :</label><br>
+                                    <input type="radio" value="" name="ubicacion" id=""/>Entre colindancias<br>
+                                    <input type="radio" value="" name="ubicacion" id=""/>En esquina<br>
+                                    <input type="radio" value="" name="ubicacion" id=""/>Aislada<br>
+                                  </td>
+                              </tr>
+                            </table>
+                            
+                         </div>
+                    </div>
+                    <div class="step__footer">
+                        <button type="button" class="step__button step__button--back" data-to_step="1" data-step="2">Regresar</button>
+                        <button type="button" class="step__button step__button--next" data-to_step="3" data-step="2">Siguiente</button>
+                    </div>
+                </div>
+
+                <div class="step" id="step-3">
+                    <div class="step__header">
+                        <h2 class="step__title">Datos de contacto</h2>
+                    </div>
+                    <div class="step__body">
+                        <label class="label_font">Nombre Completo</label>
+                        <input type="text" placeholder="P.ej. Francisco Martinez Del Campo" class="step__input">
+                        <label class="label_font">Número de teléfono</label>
+                        <input type="text" placeholder="P.ej. +1 3004005000" class="step__input">
+                        <label class="label_font">Correo Electrónico</label>
+                        <input type="text" placeholder="P.ej. john@doe.com x" class="step__input">
+                    </div>
+                    <div class="step__footer">
+                        <button type="button" class="step__button step__button--back" data-to_step="2" data-step="3">Regresar</button>
+                        <button type="submit" class="step__button">Finalizar</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <script src="js/app.js"></script>
+    <script src="js/formulario.js"></script>
+</body>
+</html>
