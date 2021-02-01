@@ -26,3 +26,7 @@ function showContent() {
     }
 }
 
+function mensaje(){
+  alert("¡Muchas gracias! En un momento recibirá su cotización via correo electrónico");
+}
+
