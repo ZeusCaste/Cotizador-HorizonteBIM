@@ -1,0 +1,22 @@
+ body {
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+ }
+ 
+ main {
+     flex: 1 0 auto;
+ }
+ 
+ .alert {
+     padding: 5px;
+     margin-bottom: 5px;
+     border: 1px solid transparent;
+     border-radius: 4px;
+ }
+ 
+ .alert-danger {
+     background-color: #cd2e26;
+     border-color: #cd2e26;
+     color: white;
+ }
