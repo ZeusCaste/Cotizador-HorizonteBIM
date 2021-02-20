@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $("#nuevaE").validetta({
-
         //bubblePosition: 'bottom',
         //bubbleGapTop: 10,
         // bubbleGapLeft: -5,
@@ -10,7 +9,7 @@ $(document).ready(function() {
         onValid: function(e) {
             e.preventDefault();
             var edif = $('input:radio[name=edificacion]:checked').val();
-            var chk = $('[name="acheckbox[]"]:checked').map(function() {
+            var chk = $('[name="acheckbox"]:checked').map(function() {
                 return this.value;
 
             }).get();
@@ -20,13 +19,13 @@ $(document).ready(function() {
             var ema = $('#email').val();
 
             //alert(edif);
-            $.alert({
+            /*$.alert({
                 title: "<h4>Cotizador BIM</h4>",
                 content: "<h5>Hola " + Nombre + "<br>Se enviara un email a " + ema + "<br> confirmando la cotizacion <br>por edificacion nueva" + "</h5>",
                 icon: "fas fa-cogs fa-2x",
                 type: "green",
                 theme: "supervan"
-            });
+            });*/
 
         },
         onError: function(event) {
