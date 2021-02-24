@@ -20,3 +20,11 @@
      border-color: #cd2e26;
      color: white;
  }
+ 
+ .content-result {
+     display: none;
+ }
+ 
+ .botonM {
+     display: none;
+ }
