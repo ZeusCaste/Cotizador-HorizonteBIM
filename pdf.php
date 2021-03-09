@@ -2,9 +2,6 @@
 
 include("./php/fpdf182/fpdf.php");
 include_once('CPDF.php');
-require "./PHPMailer-master/src/PHPMailer.php";
-require "./PHPMailer-master/src/SMTP.php";
-require "./PHPMailer-master/src/Exception.php";
 $aedif=array("Vivienda Familiar", "Vivienda Adosada", "Vivienda Multifamiliar", "Vivienda Residencial", "Oficinas y Locales", "Comercial", "administrativo", "Estacionamientos", "Pública concurrencia", "Docencia", "Salud", "Industrial");
 $nedif=array(5206.38, 12432.12, 11576.7, 20241.45, 16263.76, 14119.76, 22000, 6206.63, 13162.54, 6908.8, 25000, 5269.43);
 $nombre= $_POST["nombreC"]; 
@@ -79,7 +76,8 @@ $Stproye='';
      
 
 
-
+   setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish');
+   $fecha = strftime("%A %d de %B del %Y");
 
 $pdf = new PDF();
 $pdf->AddPage();
@@ -92,7 +90,7 @@ $pdf->AddPage();
 //Fecha
 $pdf->SetFont('Times','', 12);
 $pdf->SetXY(130,40);
-$pdf->Cell(15, 8, utf8_decode('FECHA'), 0, 'L');//insertar variable de FECHA
+$pdf->Cell(15, 8, utf8_decode("$fecha"), 0, 'L');//insertar variable de FECHA
  
 //Datos
 $pdf->SetXY(20, 55);
@@ -174,31 +172,40 @@ $pdf->Cell(27, 8, utf8_decode('Atentamente'), 0, 'C');
 $pdf->SetXY(80, 215);
 $pdf->Cell(27, 8, utf8_decode('Ing. Moisés Barrientos Lozano.'), 0, 'C');
 
-$doc = $pdf->Output('','S') //Salida al navegador
+$doc = $pdf->Output('','S'); //Salida al navegador
  
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-
+require "PHPMailer-master/src/PHPMailer.php";
+require "PHPMailer-master/src/SMTP.php";
+require "PHPMailer-master/src/Exception.php";
 
 //Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
 try {
     //Server settings
-    $mail->SMTPDebug = 0;                      //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->isSMTP();       
+    $mail->SMTPDebug = 0;                                     //Send using SMTP
+    $mail->Host = gethostbyname('smtp.gmail.com');                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'zeuscaste@gmail.com';                     //SMTP username
-    $mail->Password   = 'Guapo123.';                               //SMTP password
+    $mail->Username   = 'pruebasbimcotizador@gmail.com';                     //SMTP username
+    $mail->Password   = 'Hola123.';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+        )
+        );                            //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
     $mail->setFrom('zeuscaste@gmail.com', 'Horizonte BIM');
-    $mail->addAddress('zeuscaste@gmail.com');     //Add a recipien
+    $mail->addAddress($email);     //Add a recipien
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
@@ -209,7 +216,7 @@ try {
     $mail->AddStringAttachment($doc, 'CotizacionBIM.pdf', 'base64');
 
     $mail->send();
-    echo 'Message has been sent';
+    $enviado =" ".$email;
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
@@ -226,3 +233,81 @@ function ImporteFac23($edif, $areat, $ResT)
    return $edif * $areat * $ResT * 0.7 * 0.9;
 }
 ?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Cotizador BIM</title>
+    <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="./images/logo.jpeg" rel="icon">
+    <link href="./images/logo.jpeg" rel="apple-touch-icon">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="./plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="./plugins/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="./plugins/validetta/validetta.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
+    <link href="./css/general.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="./plugins//jquery-3.4.1.min.js"></script> -->
+    <script src="./plugins/materialize/js/materialize.min.js"></script>
+    <script src="./plugins/validetta/validetta.js"></script>
+    <script src="./plugins/validetta/validetta.min.js"></script>
+    <script src="./plugins/validetta/validettaLang-es-ES.js"></script>
+    <script src="./plugins/confirm/jquery-confirm.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+    <nav class="nav-extended ">
+    <div class="nav-wrapper center-align ">
+     <span> <i class="fas fa-pencil-ruler fa-4x"></i><i class="fas fa-lightbulb fa-4x"></i><i class="fas fa-user-edit fa-4x"></i></span>
+    </div>
+    <div class="nav-content center-align">
+      <span class="nav-title ">COTIZADOR ARQUITECTURA Y ESTRUCTURA</span>
+    
+    </div>
+  </nav>
+
+    </header>
+    <main class="valign-wrapper">
+       <div class="container">
+       <div class="col s12 m7">
+    <h2 class="header">Hola <?php echo$nombre ?></h2>
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>Se ha enviado un archivo PDF al correo:<?php echo$enviado;?> </p>
+          <br>
+          <i class="fas fa-envelope-open-text fa-7x fa-spin"></i>
+        </div>
+        <div class="card-action">
+          <a href="./">CONTINUAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   
+</div>
+    </main>
+    <footer class="page-footer">
+
+        <div class="container center-align">
+            Copyright © PGP Developer 2021
+        </div>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+    M.AutoInit();
+
+</html>
