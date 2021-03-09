@@ -14,7 +14,7 @@ $(document).ready(function() {
             var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
             var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
             var Aedif = new Array("Vivienda Familiar", "Vivienda Adosada", "Vivienda Multifamiliar", "Vivienda Residencial", "Oficinas y Locales", "Comercial", "administrativo", "Estacionamientos", "Pública concurrencia", "Docencia", "Salud", "Industrial");
-            var AreaPB, NumeroNiv, AreaNiv, NumSot, AreaSot, Edif1, Edif2, Edif3, Edif4, Edif5, Edif6, Edif7, Edif8, Edif9, Edif10, Edif11, Edif12;
+            var AreaPB, NumeroNiv, AreaNiv, NumSot, AreaSot, Edif1, Edif2, Edif3, Edif4, Edif5, Edif6, Edif7, Edif8, Edif9, Edif10, Edif11, Edif12, TiempoEjec, TiempoEjec2, TiempoEjecT, TiempoEjec3, NumProy, TiempoEjecSub;
             // var AreaTot, Factura1, Factor2, Factor3, Tab1, Tab2, Tab3, Tab4, Tab5, Tabulador1, Tabulador2, Tabulador3, Tabulador4, Tabulador5, ResTabulador1 = 0;
             var Textop = "",
                 Textoim = "";
@@ -63,6 +63,8 @@ $(document).ready(function() {
                 }
             }
 
+            NumProy = Proyecto.length;
+
             Direccion = document.getElementById("dirUb").value;
             Ciudad = document.getElementById("jmr_contacto_municipio").value;
             Estado = document.getElementById("jmr_contacto_estado").value;
@@ -79,10 +81,24 @@ $(document).ready(function() {
             Telefono = document.getElementById("numTel").value;
             Correo = document.getElementById("email").value;
 
+            Factor2 =  parseInt(document.getElementById("fac2").value, 10);
+            Factor3 =  parseInt(document.getElementById("fac3").value, 10);
+
+            FactorTie = parseInt(document.getElementById("factie").value, 10);
+            FactorTie2 = parseInt(document.getElementById("factie2").value, 10);
+            FactorTie3 = parseInt(document.getElementById("factie3").value, 10);
+
             AreaTot = AreaPB + (AreaNiv * NumeroNiv) + (AreaSot * NumSot);
+
+            TiempoEjec = Math.pow(AreaTot, 0.4548);
+            TiempoEjec2 = 0.2959 * TiempoEjec;
+            TiempoEjec3 = TiempoEjec2.toFixed(2);
+            TiempoEjecSub = TiempoEjec3 * FactorTie * FactorTie2 * FactorTie3;
+            TiempoEjecT = TiempoEjecSub * NumProy;
+            
             // factores de reduccion
-            Factor2 = 0.7;
-            Factor3 = 0.9;
+            //Factor2 = 0.7;
+            //Factor3 = 0.9;
 
             for (let index = 0; index < Proyecto.length; index++) {
                 switch (Proyecto[index]) {
@@ -129,15 +145,16 @@ $(document).ready(function() {
 
             var f = new Date();
             Fecha = "<div class='col s6 m6 l6 right-align'><p> " + diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear() + "</p></div></div>";
-            Titulo = "<div class='row'><div class= 'col s6 m6 l6'><h5 class='titulo'>" + "Horizonte BIM" + "</h5></div>";
+            Titulo = "<div class='row'><div class= 'col s6 m6 l6'><h5 class='titulo'>" + "COTIZADOR ARQUITECTURA Y ESTRUCTURA" + "</h5></div>";
             //contentbox.innerHTML += Titulo;
 
 
             if (Proyecto.length == 1) {
                 Texto = "<div class='s12'>" + "<p>Por este conducto, presentamos a su consideración, nuestra propuesta para la elaboración del proyecto " + Proyecto[0] + " de tipo " + Edificacion + "en" + Ciudad + ", con un área total de " + AreaTot + " m2." + "</p></div>";
                 Texto2 = "<div class='12'><b>" + "El importe de la presente propuesta es de $" + ImporteTotal.toFixed(2) + ", sin incluir el I. V. A." + "</b></div>";
-
-                contentbox.innerHTML += Titulo + Fecha + Texto + Texto2;
+                Texto3 = "<div class='s12'>" + "Tiempo de entrega estimado por proyecto: " + TiempoEjecSub;
+                Texto4 = "<div class='12'><b>" + "El tiempo total estimado de ejecución es de: " + TiempoEjecT + " Semanas </b></div>";
+                contentbox.innerHTML += Titulo + Fecha + Texto + Texto2 + Texto3 + Texto4;
 
             } else {
                 Texto = "<div class='s12'>" + "Por este conducto, presentamos a su consideración, nuestra propuesta para la elaboración de los proyectos " + "</div>";
@@ -149,10 +166,12 @@ $(document).ready(function() {
                 }
                 textoR = "<div class='s12'>" + "De tipo " + Edificacion + " en " + Ciudad + " Edo. de " + Estado + ", con un área total de " + AreaTot + " m<sup>2</sup>." + "</div>";
                 Texto2 = "<div class='s12'><b>" + "El importe de la presente propuesta es de $" + ImporteTotal.toFixed(2) + ", sin incluir el I. V. A." + "</b></div>";
-                contentbox.innerHTML += Titulo + Fecha + Texto + Textop + textoR + Textoim + Texto2; //+ Textop + Texto2 + textoR;
+                Texto3 = "<div class='s12'>" + "Número de proyectos: " + NumProy + ", tiempo de entrega estimado por proyecto: " + TiempoEjecSub;
+                Texto4 = "<div class='12'><b>" + "El tiempo total estimado de ejecución es de: " + TiempoEjecT + " Semanas </b></div>";
+                contentbox.innerHTML += Titulo + Fecha + Texto + Textop + textoR + Textoim + Texto2 + Texto3 + Texto4; //+ Textop + Texto2 + textoR;
             }
 
-            textoAlert = "<h4>HORIZONTE BIM</h4>" + "<p>Hola " + Nombre + " se envira un EMAIL a " + Correo + " en formato PDF con la cotizacion de manera desglosada</p>";
+            textoAlert = "<h4>COTIZADOR ARQUITECTURA Y ESTRUCTURA</h4>" + "<p>Hola " + Nombre + " se envira un EMAIL a " + Correo + " en formato PDF con la cotizacion de manera desglosada</p>";
             textoAlert1 = "<p>Si el correo electronico es correcto presione enviar, de lo contrario presione cancelar y proporcione el correo electronio correcto</p>"
             contentAl.innerHTML += textoAlert + textoAlert1;
             document.getElementById("testnose").onclick = function() { myFunction(botonM) };
