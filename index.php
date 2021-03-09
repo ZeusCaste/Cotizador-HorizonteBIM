@@ -32,16 +32,15 @@
 
 <body>
     <header>
-        <nav class="nav-extended">
-            <div class="nav-wrapper">
-
-                <a href="#!" class="brand-logo center"><img src="./images/logo.jpeg" alt="" class="responsive-img"></a>
-            </div>
-            <div class="nav-content center">
-                <span class="nav-title">Cotizador BIM</span>
-            </div>
-
-        </nav>
+    <nav class="nav-extended ">
+    <div class="nav-wrapper center-align ">
+     <span> <i class="fas fa-pencil-ruler fa-4x"></i><i class="fas fa-lightbulb fa-4x"></i><i class="fas fa-user-edit fa-4x"></i></span>
+    </div>
+    <div class="nav-content center-align">
+      <span class="nav-title ">COTIZADOR ARQUITECTURA Y ESTRUCTURA</span>
+    
+    </div>
+  </nav>
 
     </header>
     <main class="valign-wrapper">
@@ -338,6 +337,31 @@
                                     <div class="input-field col s12 m4 l4">
                                         <input placeholder="Evangeline@ray.com" id="email" type="text" name="email" data-validetta="required,email">
                                         <label ><i class="fas fa-at"></i> Correo Electrónico</label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m4 l4">
+                                        <input placeholder="Factor Mercado (IMPORTE)" id="fac2" name="fac2" type="text">
+                                        <label ><i></i> Factor Mercado</label>
+                                    </div>
+                                    <div class="input-field col s12 m4 l4">
+                                        <input placeholder="Factor Situación Empresa (IMPORTE)" id="fac3" type="text" name="fac3">
+                                        <label ><i></i> Factor Situación Empresa</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m4 l4">
+                                        <input placeholder="Factor Tabulador (TIEMPO ENTREGA)" id="factie" name="factie" type="text">
+                                        <label ><i></i> Factor Mercado</label>
+                                    </div>
+                                    <div class="input-field col s12 m4 l4">
+                                        <input placeholder="Factor Eficiencia Empresa (TIEMPO ENTREGA)" id="factie2" name="factie2" type="text">
+                                        <label ><i></i> Factor Mercado</label>
+                                    </div>
+                                    <div class="input-field col s12 m4 l4">
+                                        <input placeholder="Factor Carga de Trabajo (TIEMPO ENTREGA)" id="factie3" type="text" name="factie3">
+                                        <label ><i></i> Factor Situación Empresa</label>
                                     </div>
                                 </div>
                                 <button class="btn waves-effect waves-light" type="submit" name="action">Cotizar
