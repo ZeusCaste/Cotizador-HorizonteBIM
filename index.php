@@ -57,7 +57,9 @@
     
     </div>
   </nav>
-
+    <div>
+        <a id="login" class="waves-effect waves-light btn modal-trigger"  href="login.php">ADMIN</a>
+    </div>
     </header>
     <main class="valign-wrapper">
         <div class="container">
