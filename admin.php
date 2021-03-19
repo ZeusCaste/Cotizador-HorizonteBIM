@@ -5,12 +5,12 @@
 
    //se despliega el resultado
    while ($row = pg_fetch_assoc($result)){
-        $f1E = $row['FactorRedProyecto'];  
-        $f2E = $row['FactorMerProyecto'];  
-        $f3E = $row['FactorSitEmProyecto']; 
-        $f1T = $row['FactorRedTiempo'];  
-        $f2T = $row['FactorEficTiempo'];  
-        $f3T = $row['FactorCarTiempo'];  
+        $f1E = $row['factorredproyecto'];  
+        $f2E = $row['factormerproyecto'];  
+        $f3E = $row['factorsitemproyecto']; 
+        $f1T = $row['factorredtiempo'];  
+        $f2T = $row['factorefictiempo'];  
+        $f3T = $row['factorcartiempo'];  
     }
 
 ?>
