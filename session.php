@@ -4,9 +4,9 @@
    
    $user_check = $_SESSION['login_user'];
    
-   $ses_sql = mysqli_query($db,"select nombre from usuarios where usuario = '$user_check' ");
+   $ses_sql = pg_query($conexion,"select nombre from usuarios where usuario = '$user_check' ");
    
-   $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
+   $row = pg_fetch_array($ses_sql,PGSQL_ASSOC);
    
    $login_session = $row['nombre'];
    

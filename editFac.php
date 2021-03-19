@@ -14,7 +14,7 @@
 
     //$count = mysqli_num_rows($result);
 
-    if(mysqli_query($db,$sql_fac)) {
+    if(pg_query($conexion,$sql_fac) == true) {
         echo"<script type='text/javascript'>
             alert('Factores editados de manera correcta!');
             </script>";

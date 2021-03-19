@@ -1,10 +1,10 @@
 <?php
    include('session.php');
    $sql_fac = "SELECT * FROM factores";
-    $result = mysqli_query($db,$sql_fac);
+    $result = pg_query($conexion,$sql_fac);
 
    //se despliega el resultado
-   while ($row = mysqli_fetch_assoc($result)){
+   while ($row = pg_fetch_assoc($result)){
         $f1E = $row['FactorRedProyecto'];  
         $f2E = $row['FactorMerProyecto'];  
         $f3E = $row['FactorSitEmProyecto']; 

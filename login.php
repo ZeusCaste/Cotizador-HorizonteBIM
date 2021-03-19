@@ -7,15 +7,15 @@
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
       
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+      $myusername = pg_escape_string($conexion,$_POST['username']);
+      $mypassword = pg_escape_string($conexion,$_POST['password']); 
       
       $sql = "SELECT idUsuario FROM usuarios WHERE usuario = '$myusername' and password = '$mypassword'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $result = pg_query($conexion,$sql);
+      $row = pg_fetch_array($result,PGSQL_ASSOC);
       //$active = $row['active'];
       
-      $count = mysqli_num_rows($result);
+      $count = pg_num_rows($result);
       
       // If result matched $myusername and $mypassword, table row must be 1 row
 		
