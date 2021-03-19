@@ -1,7 +1,7 @@
 <?php
    include('session.php');
    $sql_fac = "SELECT * FROM factores";
-    $result = pg_query($conexion,$sql_fac);
+    $result = pg_query($conexion,$sql_fac) or die("Error en select: ".pg_last_error());
 
    //se despliega el resultado
    while ($row = pg_fetch_assoc($result)){

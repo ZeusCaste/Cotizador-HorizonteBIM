@@ -4,7 +4,7 @@
    
    $user_check = $_SESSION['login_user'];
    
-   $ses_sql = pg_query($conexion,"select nombre from usuarios where usuario = '$user_check' ");
+   $ses_sql = pg_query($conexion,"select nombre from usuarios where usuario = '$user_check' ") or die("Error en select: ".pg_last_error());
    
    $row = pg_fetch_array($ses_sql,PGSQL_ASSOC);
    

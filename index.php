@@ -2,7 +2,7 @@
     include('config.php');
 
     $sql_fac = "SELECT * FROM factores";
-    $result = pg_query($conexion,$sql_fac);
+    $result = pg_query($conexion,$sql_fac) or die("Error en select: ".pg_last_error());
 
    //se despliega el resultado
    while ($row = pg_fetch_assoc($result)){
@@ -42,7 +42,7 @@
     <script src="./plugins/validetta/validetta.min.js"></script>
     <script src="./plugins/validetta/validettaLang-es-ES.js"></script>
     <script src="./plugins/confirm/jquery-confirm.min.js"></script>
-    <script src="./js/pdf.js"></script>
+   
 
 </head>
 
@@ -179,13 +179,26 @@
                                             </label>
                                         <br>
 
-                                        <div id="edificaciones" style="margin-top: 20px">
-
+                                        <div id="edificaciones" style="margin-top: 20px;" class="row">
+                                            
                                         </div>
 
-                                        <div style="margin-top: 20px">
-                                            <button id="add-edificaciones" class="waves-effect waves-light btn"> Agregar edificacion </button>
-                                            <button id="clean-edificaciones" class="waves-effect red btn"> Limpiar campos </button>
+                                        <hr>
+
+                                        <div style="margin-top: 30px" class="row">
+                                            <div class="col s6">
+                                                <button id="add-edificaciones" 
+                                                        class="waves-effect waves-light btn"
+                                                        style="width: 80%"
+                                                        > Agregar edificacion </button>
+                                            </div>
+                                            <div class="col s6">
+                                                <button id="clean-edificaciones" 
+                                                        class="waves-effect red btn"
+                                                        style="width: 80%"
+                                                        > Limpiar campos </button>
+                                                        
+                                            </div>
                                         </div>
 
                                         <!-- USO PENDIENTE
@@ -731,6 +744,8 @@
                         }
                     });
                 });
+
+                document.querySelector('#clean-edificaciones').disabled = false;
             }
         });
     });

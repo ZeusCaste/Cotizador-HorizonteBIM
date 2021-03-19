@@ -11,8 +11,8 @@
       $mypassword = pg_escape_string($conexion,$_POST['password']); 
       
       $sql = "SELECT idUsuario FROM usuarios WHERE usuario = '$myusername' and password = '$mypassword'";
-      $result = pg_query($conexion,$sql);
-      $row = pg_fetch_array($result,PGSQL_ASSOC);
+      $result = pg_query($conexion,$sql) or die("Error en select: ".pg_last_error());
+      $row = pg_fetch_array($result,null,PGSQL_ASSOC);
       //$active = $row['active'];
       
       $count = pg_num_rows($result);

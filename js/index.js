@@ -182,10 +182,10 @@ $(document).ready(function () {
 
             });
 
-            /*console.log(ImportesTotales);
+            console.log(ImportesTotales);
             console.log(Importe);
             console.log(TiemposEjecT);
-            console.log(TiemposEjecSub);*/
+            console.log(TiemposEjecSub);
 
 
             var f = new Date();
@@ -399,11 +399,17 @@ function addEdificacion() {
         var pos = edificaciones.length - 1;
 
         var container = document.querySelector('#edificaciones');
+        var div = document.createElement('div');
         var button = document.createElement('button');
 
+        div.classList.add('col', 's6');
+
         button.textContent = name
-        button.classList.add('waves-effect', 'waves-light', 'btn');
-        container.appendChild(button)
+        div.style.cssText = 'margin-top: 20px;'
+        button.classList.add('waves-effect', 'waves-light', 'btn', 'col', 's6');
+        button.style.cssText = 'width: 80%;'
+        div.appendChild(button)
+        container.appendChild(div);
         button.addEventListener('click', function (event) {
             event.preventDefault();
             completeEdificaciones(pos);

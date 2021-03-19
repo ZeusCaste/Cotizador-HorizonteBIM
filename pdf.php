@@ -60,6 +60,13 @@ foreach($edificaciones as $keyE => $edificacion) {
          $proyectos.= $proyecto.", ";
       }
    }
+
+
+   if(((($keyE % 2) == 0) && ($keyE != 0))) {
+      $pdf->AddPage();
+      $posn = 78;
+   }
+
    $pdf->SetXY(20,$posn);
    $pdf->SetFont('Times','B',12);
    $pdf->Cell(20, 8, "Edificacion #$numEdificacion ", 0, 'L');

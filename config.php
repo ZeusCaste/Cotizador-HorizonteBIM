@@ -11,7 +11,7 @@ $conexion = pg_connect( "user=".$usuario." ".
                             "dbname=".$bd);
 
 if($conexion == false){
-    die( "Error al conectar: ".pg_last_error() );   
+    die( "Error al conectar: ".pg_last_error());
 }
 
 
