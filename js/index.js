@@ -139,7 +139,7 @@ $(document).ready(function () {
                 TiempoEjec = Math.pow(AreaTot, 0.4548);
                 TiempoEjec2 = 0.2959 * TiempoEjec;
                 TiempoEjec3 = TiempoEjec2.toFixed(2);
-                TiempoEjecSub = TiempoEjec3 * FactorTie * FactorTie2 * FactorTie3;
+                TiempoEjecSub = (TiempoEjec3 * FactorTie * FactorTie2) + FactorTie3;
                 TiemposEjecSub.push(TiempoEjecSub.toFixed(2));
                 TiempoEjecT = TiempoEjecSub * edificacion.proyectos.length;
                 TiemposEjecT.push(TiempoEjecT.toFixed(2));
