@@ -21,7 +21,7 @@ $(document).ready(function () {
             var Textop = "",
                 Textoim = "";
             var ImporteTotal = 0,
-                Importe1, Importe2, Importe3, Importe4, Importe5, TiempoEjecSub2;
+                Importe1, Importe2, Importe3, Importe4, Importe5;
             var Proyecto = new Array(),
                 Importe = new Array(edificaciones.length);
             var valueEdif = [5206.38, 12432.12, 11576.7, 20241.45, 16263.76, 14119.76, 22000, 6206.63, 13162.54, 6908.8, 25000, 5269.43];
@@ -139,10 +139,9 @@ $(document).ready(function () {
                 TiempoEjec = Math.pow(AreaTot, 0.4548);
                 TiempoEjec2 = 0.2959 * TiempoEjec;
                 TiempoEjec3 = TiempoEjec2.toFixed(2);
-                TiempoEjecSub = TiempoEjec3 * FactorTie * FactorTie2;
-                TiempoEjecSub2 =  TiempoEjecSub + FactorTie3;
-                TiemposEjecSub2.push(TiempoEjecSub2.toFixed(2));
-                TiempoEjecT = TiempoEjecSub2 * edificacion.proyectos.length;
+                TiempoEjecSub = TiempoEjec3 * FactorTie * FactorTie2 * FactorTie3;
+                TiemposEjecSub.push(TiempoEjecSub.toFixed(2));
+                TiempoEjecT = TiempoEjecSub * edificacion.proyectos.length;
                 TiemposEjecT.push(TiempoEjecT.toFixed(2));
                 
 
