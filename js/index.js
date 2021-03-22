@@ -150,19 +150,24 @@ $(document).ready(function () {
                     switch (edificacion.proyectos[j]) {
                         case "Arquitectura":
                             ResTabulador.push(TabuladorFac1(AreaTot, -0.162, 23.41, Factor1));
+                            console.log("arqui: " + ResTabulador);
                             break;
     
                         case "Estructura":
                             ResTabulador.push(TabuladorFac1(AreaTot, -0.163, 4.2727, Factor1));
+                            console.log("estructura: " + ResTabulador);
                             break;
                         case "Instalalación hidráulica":
                             ResTabulador.push(TabuladorFac1(AreaTot, -0.15, 3.5992, Factor1));
+                            console.log("inst hidr: " + ResTabulador);
                             break;
                         case "Instalación sanitaria":
                             ResTabulador.push(TabuladorFac1(AreaTot, -0.152, 5.1894, Factor1));
+                            console.log("inst san: " + ResTabulador);
                             break;
                         case "Instalación eléctrica":
                             ResTabulador.push(TabuladorFac1(AreaTot, -0.164, 4.775, Factor1));
+                            console.log("inst elec: " + ResTabulador);
                             break;
     
                     }
