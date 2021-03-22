@@ -24,7 +24,7 @@ $(document).ready(function () {
                 Importe1, Importe2, Importe3, Importe4, Importe5;
             var Proyecto = new Array(),
                 Importe = new Array(edificaciones.length);
-            var valueEdif = [5206.38, 12432.12, 11576.7, 20241.45, 16263.76, 14119.76, 22000, 6206.63, 13162.54, 6908.8, 25000, 5269.43];
+            var valueEdif = [0,5206.38, 12432.12, 11576.7, 20241.45, 16263.76, 14119.76, 22000, 6206.63, 13162.54, 6908.8, 25000, 5269.43];
             var edificacionElem = document.getElementsByName("edificacion");
             var proyectos = document.getElementsByName("acheckbox[]");
             var accesibilidad = document.getElementsByName("accesibilidad");
