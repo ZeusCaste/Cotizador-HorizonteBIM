@@ -348,6 +348,11 @@ function TabuladorFac1(Area, exp, con, Factor1) {
 }
 
 function ImporteFac23(edif, areat, ResT, Factor2, Factor3) {
+    console.log(edif);
+    console.log(areat);
+    console.log(ResT);
+    console.log(Factor2);
+    console.log(Factor3);
     return edif * areat * ResT * Factor2 * Factor3;
 }
 
