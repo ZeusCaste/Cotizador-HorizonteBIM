@@ -140,8 +140,10 @@ $(document).ready(function () {
                 TiempoEjec2 = 0.2959 * TiempoEjec;
                 TiempoEjec3 = TiempoEjec2.toFixed(2);
                 TiempoEjecSub = (TiempoEjec3 * FactorTie * FactorTie2) + FactorTie3;
+                TiempoEjecSub = Math.round(TiempoEjecSub);
                 TiemposEjecSub.push(TiempoEjecSub.toFixed(2));
                 TiempoEjecT = TiempoEjecSub * edificacion.proyectos.length;
+                TiempoEjecT = Math.round(TiempoEjecT);
                 TiemposEjecT.push(TiempoEjecT.toFixed(2));
                 
 
