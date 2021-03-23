@@ -27,6 +27,8 @@ include_once('CPDF.php');
 $aedif=array("Vivienda Familiar", "Vivienda Adosada", "Vivienda Multifamiliar", "Vivienda Residencial", "Oficinas y Locales", "Comercial", "administrativo", "Estacionamientos", "Pública concurrencia", "Docencia", "Salud", "Industrial");
 $nedif=array(5206.38, 12432.12, 11576.7, 20241.45, 16263.76, 14119.76, 22000, 6206.63, 13162.54, 6908.8, 25000, 5269.43);
  
+$tiemposEjecT = print_r($tiemposEjecT);
+
 $pdf = new PDF();
 $pdf->AddPage();
 //Margen iniciando en 0, 0
