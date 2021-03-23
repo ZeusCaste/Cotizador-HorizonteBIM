@@ -141,10 +141,10 @@ $(document).ready(function () {
                 TiempoEjec3 = TiempoEjec2.toFixed(2);
                 TiempoEjecSub = (TiempoEjec3 * FactorTie * FactorTie2) + FactorTie3;
                 TiempoEjecSub = Math.round(TiempoEjecSub);
-                TiemposEjecSub.push(TiempoEjecSub);
+                TiemposEjecSub.push(TiempoEjecSub.toFixed(0));
                 TiempoEjecT = TiempoEjecSub * edificacion.proyectos.length;
                 TiempoEjecT = Math.round(TiempoEjecT);
-                TiemposEjecT.push(TiempoEjecT);
+                TiemposEjecT.push(TiempoEjecT.toFixed(0));
                 
 
     
@@ -222,7 +222,7 @@ $(document).ready(function () {
 
                     Texto = "<div class='s12'>" + "<p><b>Edificacion #" + (index + 1) + ": </b>" + edificacion.proyectos[0] + " de tipo " + Aedif[edificacion.edificacion - 1] + " en " + Ciudad + ", con un área total de " + AreaTot + " m2." + "</p></div>";
                     Texto2 = "<div class='12'><b>" + "El importe de la presente propuesta es de $" + ImportesTotales[index].toFixed(2) + ", sin incluir el I. V. A." + "</b></div>";
-                    Texto3 = "<div class='s12'>" + "Tiempo de entrega estimado por proyecto: " + TiemposEjecSub[index] + "Semanas";
+                    Texto3 = "<div class='s12'>" + "Tiempo de entrega estimado por proyecto: " + TiemposEjecSub[index] + " Semanas";
                     Texto4 = "<div class='12'><b>" + "El tiempo total estimado de ejecución es de: " + TiemposEjecT[index] + " Semanas </b></div> <hr>";
                     contentbox.innerHTML += Texto + Texto2 + Texto3 + Texto4;
     
@@ -239,7 +239,7 @@ $(document).ready(function () {
                     }
                     textoR = "<div class='s12'>" + "De tipo " + Aedif[edificacion.edificacion - 1] + " en " + Ciudad + " Edo. de " + Estado + ", con un área total de " + AreaTot + " m<sup>2</sup>." + "</div>";
                     Texto2 = "<div class='s12'><b>" + "El importe de la presente propuesta es de $" + ImportesTotales[index].toFixed(2) + ", sin incluir el I. V. A." + "</b></div>";
-                    Texto3 = "<div class='s12'>" + "Número de proyectos: " + edificacion.proyectos.length + ", tiempo de entrega estimado por proyecto: " + TiemposEjecSub[index] + "Semanas";
+                    Texto3 = "<div class='s12'>" + "Número de proyectos: " + edificacion.proyectos.length + ", tiempo de entrega estimado por proyecto: " + TiemposEjecSub[index] + " Semanas";
                     Texto4 = "<div class='12'><b>" + "El tiempo total estimado de ejecución es de: " + TiemposEjecT[index] + " Semanas </b></div> <hr>";
                     contentbox.innerHTML += Textop + textoR + Textoim + Texto2 + Texto3 + Texto4; //+ Textop + Texto2 + textoR;
                 }

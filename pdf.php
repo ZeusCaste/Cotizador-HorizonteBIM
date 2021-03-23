@@ -139,7 +139,7 @@ $pdf->SetXY(27, 200);
 $pdf->Cell(27, 8, utf8_decode('h)   Dos revisiones y ajustes en caso necesario, desde memoria cálculo hasta presupuesto.'), 0, 'L');
 //*****
 $pdf->SetXY(20, 220);
-$pdf->MultiCell(170,5,utf8_decode("El tiempo de ejecución de los trabajos es de ".$tiemposEjecT." semanas a partir de su autorización y pago de anticipo."));
+$pdf->MultiCell(170,5,utf8_decode("El tiempo de ejecución de los trabajos es de $tiemposEjecT semanas a partir de su autorización y pago de anticipo."));
 $pdf->SetXY(20, 230);
 $pdf->MultiCell(170,5,utf8_decode('La forma de pago es 50 % de anticipo, 20 % semanal, partir de la segunda semana, conforme al avance y 10 % al finalizar la última revisión.'));
 $pdf->SetXY(20, 240);
