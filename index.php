@@ -50,7 +50,7 @@
     <header>
     <nav class="nav-extended ">
     <div class="nav-wrapper center-align ">
-     <span> <i class="fas fa-pencil-ruler fa-4x"></i><i class="fas fa-lightbulb fa-4x"></i><i class="fas fa-user-edit fa-4x"></i></span>
+     <a href="index.php"><span> <i class="fas fa-pencil-ruler fa-4x"></i><i class="fas fa-lightbulb fa-4x"></i><i class="fas fa-user-edit fa-4x"></i></span></a>
     </div>
     <div class="nav-content center-align">
       <span class="nav-title ">COTIZADOR ARQUITECTURA Y ESTRUCTURA</span>

@@ -155,7 +155,6 @@ $(document).ready(function () {
                         case "Arquitectura":
                             ResTabulador.push(TabuladorFac1(AreaTot, -0.162, 23.41, Factor1));
                             break;
-    
                         case "Estructura":
                             ResTabulador.push(TabuladorFac1(AreaTot, -0.163, 4.2727, Factor1));
                             break;
