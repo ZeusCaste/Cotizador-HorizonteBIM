@@ -16,7 +16,7 @@ $(document).ready(function () {
             var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
             var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
             var Aedif = new Array("Vivienda Familiar", "Vivienda Adosada", "Vivienda Multifamiliar", "Vivienda Residencial", "Oficinas y Locales", "Comercial", "administrativo", "Estacionamientos", "Pública concurrencia", "Docencia", "Salud", "Industrial");
-            var AreaPB, NumeroNiv, AreaNiv, NumSot, AreaSot, Edif1, Edif2, Edif3, Edif4, Edif5, Edif6, Edif7, Edif8, Edif9, Edif10, Edif11, Edif12, TiempoEjec, TiempoEjec2, TiempoEjecT, TiempoEjec3, NumProy, TiempoEjecSub;
+            var AreaPB, NumeroNiv, AreaNiv, NumSot, AreaSot, Edif1, Edif2, Edif3, Edif4, Edif5, Edif6, Edif7, Edif8, Edif9, Edif10, Edif11, Edif12, TiempoEjec, TiempoEjec2, TiempoEjecT = 0, TiempoEjec3, NumProy, TiempoEjecSub = 0;
             // var AreaTot, Factura1, Factor2, Factor3, Tab1, Tab2, Tab3, Tab4, Tab5, Tabulador1, Tabulador2, Tabulador3, Tabulador4, Tabulador5, ResTabulador1 = 0;
             var Textop = "",
                 Textoim = "";
@@ -139,12 +139,14 @@ $(document).ready(function () {
                 TiempoEjec = Math.pow(AreaTot, 0.4548);
                 TiempoEjec2 = 0.2959 * TiempoEjec;
                 TiempoEjec3 = TiempoEjec2.toFixed(2);
+
                 TiempoEjecSub = (TiempoEjec3 * FactorTie * FactorTie2) + FactorTie3;
                 TiempoEjecSub = Math.round(TiempoEjecSub);
-                TiemposEjecSub.push(TiempoEjecSub.toFixed(0));
+                TiemposEjecSub.push(TiempoEjecSub.toFixed(1));
+
                 TiempoEjecT = TiempoEjecSub * edificacion.proyectos.length;
                 TiempoEjecT = Math.round(TiempoEjecT);
-                TiemposEjecT.push(TiempoEjecT.toFixed(0));
+                TiemposEjecT.push(TiempoEjecT.toFixed(1));
                 
 
     
@@ -350,11 +352,7 @@ function TabuladorFac1(Area, exp, con, Factor1) {
 }
 
 function ImporteFac23(edif, areat, ResT, Factor2, Factor3) {
-    console.log(edif);
-    console.log(areat);
-    console.log(ResT);
-    console.log(Factor2);
-    console.log(Factor3);
+
     return edif * areat * ResT * Factor2 * Factor3;
 }
 
