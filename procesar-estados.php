@@ -139,10 +139,9 @@ if(isset($_POST["municipios"])){
                         "Ixtacomit&aacute;n",
                         "Ixtapa",
                         "Ixtapangajoya",
-                        "Jiquipilas",}
+                        "Jiquipilas",
                         "Jitotol",
                         "Ju&aacute;rez",
-
                         "Sital&aacute;",
                         "Socoltenango",
                         "Solosuchiapa",
@@ -353,7 +352,7 @@ if(isset($_POST["municipios"])){
                         "Nuevo Ideal",
                         "Ocampo",
                         "Pe&ntilde;&oacute;n Blanco",
-                        "P&aacute;nuco de Coronado"
+                        "P&aacute;nuco de Coronado",
                         "Rodeo",
                         "San Bernardo",
                         "San Dimas",
@@ -474,7 +473,7 @@ if(isset($_POST["municipios"])){
                         "Huitzuco de los Figueroa",
                         "Iguala de la Independencia",
                         "Igualapa",
-                        "Iliatenco"
+                        "Iliatenco",
                         "Ixcateopan de Cuauht&eacute;moc",
                         "Jos&eacute; Joaqu&iacute;n de Herrera",
                         "Juchit&aacute;n",
