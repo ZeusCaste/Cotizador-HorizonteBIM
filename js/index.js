@@ -158,14 +158,23 @@ $(document).ready(function () {
                         case "Estructura":
                             ResTabulador.push(TabuladorFac1(AreaTot, -0.163, 4.2727, Factor1));
                             break;
-                        case "Instalalación hidráulica":
+                        case "Instalalación hidrosanitaria":
                             ResTabulador.push(TabuladorFac1(AreaTot, -0.15, 3.5992, Factor1));
                             break;
-                        case "Instalación sanitaria":
+                        case "Aire acondicionado sin balance térmico":
                             ResTabulador.push(TabuladorFac1(AreaTot, -0.152, 5.1894, Factor1));
+                            break;
+                        case "Aire acondicionado con balance térmico":
+                            ResTabulador.push(TabuladorFac1(AreaTot, -0.15, 7.211, Factor1));
                             break;
                         case "Instalación eléctrica":
                             ResTabulador.push(TabuladorFac1(AreaTot, -0.164, 4.775, Factor1));
+                            break;
+                        case "Ventilación y extracción":
+                            ResTabulador.push(TabuladorFac1(AreaTot, -0.15, 3.5992, Factor1));
+                            break;
+                        case "Voz y datos":
+                            ResTabulador.push(TabuladorFac1(AreaTot, -0.167, 1.3448, Factor1));
                             break;
     
                     }

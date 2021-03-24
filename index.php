@@ -164,18 +164,33 @@
                                             </label>
                                         <br>
                                         <label>
-                                              <input type="checkbox" name="acheckbox[]" value="Instalalación hidráulica" data-validetta="minChecked[1]"/>
-                                              <span>Instalalación hidráulica</span>
+                                              <input type="checkbox" name="acheckbox[]" value="Instalalación hidrosanitaria" data-validetta="minChecked[1]"/>
+                                              <span>Instalalación hidrosanitaria</span>
                                             </label>
                                         <br>
                                         <label>
-                                              <input type="checkbox" name="acheckbox[]" value="Instalación sanitaria" data-validetta="minChecked[1]"/>
-                                              <span> Instalación sanitaria </span>
+                                              <input type="checkbox" name="acheckbox[]" value="Aire acondicionado sin balance térmico" data-validetta="minChecked[1]"/>
+                                              <span> Aire acondicionado sin balance térmico </span>
+                                            </label>
+                                        <br>
+                                        <label>
+                                              <input type="checkbox" name="acheckbox[]" value="Aire acondicionado con balance térmico" data-validetta="minChecked[1]"/>
+                                              <span> Aire acondicionado con balance térmico </span>
                                             </label>
                                         <br>
                                         <label>
                                               <input type="checkbox" name="acheckbox[]" value="Instalación eléctrica" data-validetta="minChecked[1]"/>
                                               <span>Instalación eléctrica</span>
+                                            </label>
+                                        <br>
+                                        <label>
+                                              <input type="checkbox" name="acheckbox[]" value="Ventilación y extracción" data-validetta="minChecked[1]"/>
+                                              <span>Ventilación y extracción</span>
+                                            </label>
+                                        <br>
+                                        <label>
+                                              <input type="checkbox" name="acheckbox[]" value="Voz y datos" data-validetta="minChecked[1]"/>
+                                              <span>Voz y datos</span>
                                             </label>
                                         <br>
 
