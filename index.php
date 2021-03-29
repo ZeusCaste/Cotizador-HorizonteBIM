@@ -67,8 +67,6 @@
     <main class="valign-wrapper">
         <div class="container">
             <div id="alert"></div>
-
-
             <div class="row">
                 <div class="col s12 m12 l12">
                     <ul class="tabs">
