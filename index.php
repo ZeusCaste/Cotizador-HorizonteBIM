@@ -53,7 +53,7 @@
      <a href="index.php"><span> <i class="fas fa-pencil-ruler fa-4x"></i><i class="fas fa-lightbulb fa-4x"></i><i class="fas fa-user-edit fa-4x"></i></span></a>
     </div>
     <div class="nav-content center-align">
-        <div><span class="nav-title ">BIM TECHNOLOGY</span></div>
+        <span class="nav-title ">BIM TECHNOLOGY</span>
         <p><h6>COTIZADOR PARA PROYECTOS DE ARQUITECTURA E INGENIERIAS</h6></p>
     </div>
     </nav>
