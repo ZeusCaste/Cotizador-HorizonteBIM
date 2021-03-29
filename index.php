@@ -54,7 +54,7 @@
     </div>
     <div class="nav-content center-align">
         <span class="nav-title ">BIM TECHNOLOGY</span>
-        <p><h6>COTIZADOR PARA PROYECTOS DE ARQUITECTURA E INGENIERIAS</h6></p>
+        <p><h5>COTIZADOR PARA PROYECTOS DE ARQUITECTURA E INGENIERIAS</h5></p>
     </div>
     </nav>
     <div class="row">
