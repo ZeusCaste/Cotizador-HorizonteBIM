@@ -87,7 +87,7 @@
     </div>
     </nav>
     <div>
-        <a id="login" class="waves-effect waves-light btn modal-trigger"  href="index.php">INICIO</a>
+        <a id="login" class="waves-effect waves-light btn modal-trigger"  href="./index.php">INICIO</a>
     </div>
     </header>
     <main>

@@ -57,7 +57,7 @@
     </div>
   </nav>
     <div class="card-action" align="right">
-    <a id="login" class="waves-effect waves-light btn modal-trigger"  href="logout.php">SALIR</a>
+    <a id="login" class="waves-effect waves-light btn modal-trigger"  href="./logout.php">SALIR</a>
     </div>
 
     </header>
