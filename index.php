@@ -53,15 +53,17 @@
      <a href="index.php"><span> <i class="fas fa-pencil-ruler fa-4x"></i><i class="fas fa-lightbulb fa-4x"></i><i class="fas fa-user-edit fa-4x"></i></span></a>
     </div>
     <div class="nav-content center-align">
-        <span class="nav-title ">BIM TECHNOLOGY</span>
-        <span>COTIZADOR PARA PROYECTOS DE ARQUITECTURA E INGENIERIAS</span>
+        <div><span class="nav-title ">BIM TECHNOLOGY</span></div>
+        <div><span>COTIZADOR PARA PROYECTOS DE ARQUITECTURA E INGENIERIAS</span></div>
     </div>
-  </nav>
-    <div>
-        <a id="login" class="waves-effect waves-light btn modal-trigger"  href="./login.php">ADMIN</a>
-    </div>
-    <div align = "right">
-        <a id="inicio" class="waves-effect red btn"  href="./index.php">BORRAR COTIZACIÓN</a>
+    </nav>
+    <div class="row">
+        <div class="col s6">
+            <a id="login" class="waves-effect waves-light btn modal-trigger"  href="./login.php">ADMIN</a>
+        </div>
+        <div class="col s6">
+            <a id="inicio" class="waves-effect red btn"  href="./index.php">BORRAR COTIZACIÓN</a>
+        </div>
     </div>
     </header>
     <main class="valign-wrapper">
