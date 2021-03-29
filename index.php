@@ -54,14 +54,14 @@
     </div>
     <div class="nav-content center-align">
         <div><span class="nav-title ">BIM TECHNOLOGY</span></div>
-        <div><span>COTIZADOR PARA PROYECTOS DE ARQUITECTURA E INGENIERIAS</span></div>
+        <div><span><h4>COTIZADOR PARA PROYECTOS DE ARQUITECTURA E INGENIERIAS</h4></span></div>
     </div>
     </nav>
     <div class="row">
         <div class="col s6">
             <a id="login" class="waves-effect waves-light btn modal-trigger"  href="./login.php">ADMIN</a>
         </div>
-        <div class="col s6">
+        <div class="col s6" align="right">
             <a id="inicio" class="waves-effect red btn"  href="./index.php">BORRAR COTIZACIÓN</a>
         </div>
     </div>
