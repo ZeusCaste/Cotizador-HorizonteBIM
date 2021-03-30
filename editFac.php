@@ -1,6 +1,8 @@
 <?php
     include('session.php');
 
+    $respuesta;
+
     $f1E = $_POST['factor1Economico'];  
     $f2E = $_POST['factor2Economico'];  
     $f3E = $_POST['factor3Economico']; 
@@ -15,15 +17,11 @@
     //$count = mysqli_num_rows($result);
 
     if(pg_query($conexion,$sql_fac) == true) {
-        echo"<script type='text/javascript'>
-            alert('Factores editados de manera correcta!');
-            </script>";
+        $respuesta = "true";
+        header("Location: admin.php?res=$respuesta");
     }else {
-        echo"<script type='text/javascript'>
-            alert('Ocurrió un error al editar los factores...');
-            </script>";
+        $respuesta = "false";
+        header("Location: admin.php?res=$respuesta");
     }
 
-
-     header("Location: admin.php");
 ?>

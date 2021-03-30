@@ -13,6 +13,18 @@
         $f3T = $row['factorcartiempo'];  
     }
 
+    $respuesta = $_GET["res"];
+
+    if($respuesta == "true"){
+        echo"<script type='text/javascript'>
+            alert('¡Factores editados de manera correcta!');
+            </script>";
+    }else if($respuesta == "false") {
+        echo"<script type='text/javascript'>
+            alert('Ocurrió un error al editar los factores.');
+            </script>";
+    }
+    
 ?>
 
 
