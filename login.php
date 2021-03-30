@@ -82,8 +82,8 @@
      <span> <i class="fas fa-pencil-ruler fa-4x"></i><i class="fas fa-lightbulb fa-4x"></i><i class="fas fa-user-edit fa-4x"></i></span>
     </div>
     <div class="nav-content center-align">
-      <span class="nav-title ">COTIZADOR ARQUITECTURA Y ESTRUCTURA</span>
-    
+        <p><h4>BIM TECHNOLOGY</h4></p>
+        <h5>COTIZADOR PARA PROYECTOS DE ARQUITECTURA E INGENIERIAS</h5>
     </div>
     </nav>
     <div>
