@@ -15,7 +15,7 @@
 
     $respuesta = $_GET["res"];
 
-    if($respuesta == "true"){
+    /*if($respuesta == "true"){
         echo"<script type='text/javascript'>
             alert('¡Factores editados de manera correcta!');
             </script>";
@@ -23,7 +23,7 @@
         echo"<script type='text/javascript'>
             alert('Ocurrió un error al editar los factores.');
             </script>";
-    }
+    }*/
     
 ?>
 
@@ -121,6 +121,15 @@
             </div>
         </div>
         </div>
+        <?php if($respuesta == "true"){
+                    echo"<script type='text/javascript'>
+                        alert('¡Factores editados de manera correcta!');
+                        </script>";
+                }else if($respuesta == "false") {
+                    echo"<script type='text/javascript'>
+                        alert('Ocurrió un error al editar los factores.');
+                        </script>";
+                }?>
     </main>
     <footer class="page-footer">
 
