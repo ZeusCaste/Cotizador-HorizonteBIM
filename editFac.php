@@ -18,10 +18,12 @@
         echo"<script type='text/javascript'>
             alert('Factores editados de manera correcta!');
             </script>";
+        console.log("Factores editados");
     }else {
         echo"<script type='text/javascript'>
             alert('Ocurrió un error al editar los factores...');
             </script>";
+        console.log("Factores editados");
     }
 
 
