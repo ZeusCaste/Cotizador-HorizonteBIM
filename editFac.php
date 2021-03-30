@@ -18,16 +18,12 @@
         echo"<script type='text/javascript'>
             alert('Factores editados de manera correcta!');
             </script>";
-        console.log("Factores editados");
-        header("Location: admin.php");
     }else {
         echo"<script type='text/javascript'>
             alert('Ocurrió un error al editar los factores...');
             </script>";
-        console.log("Factores editados");
-        header("Location: admin.php");
     }
 
 
-     //header("Location: admin.php");
+     header("Location: admin.php");
 ?>
