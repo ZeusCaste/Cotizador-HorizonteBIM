@@ -140,7 +140,7 @@ $(document).ready(function () {
                 }
 
                 var ResTabulador = [];
-                Importe[index] = new Array();
+                Importe[index] = new Array(); 
 
                 
                 TiempoEjec = Math.pow(AreaTot, 0.4548);
