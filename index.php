@@ -82,6 +82,10 @@
 
             </div>
             <div id="New" class="col s12">
+                <label>
+                    <input value="1" name="change" id="change" type="checkbox" />
+                    <span>Utilizar valores independientes para cada edificacion (Área del nivel y Direcciones)</span>
+                </label>
                 <form action="./send-mail.php" id="nuevaE" method='post'>
                     <ul class="collapsible">
                         <li>
@@ -198,24 +202,15 @@
                                         <br>
 
                                         <div id="edificaciones" style="margin-top: 20px;" class="row">
-                                            
                                         </div>
-
                                         <hr>
-
                                         <div style="margin-top: 30px" class="row">
                                             <div class="col s6">
-                                                <button id="add-edificaciones" 
-                                                        class="waves-effect waves-light btn"
-                                                        style="width: 80%"
-                                                        > Agregar edificacion </button>
+                                                <button id="add-edificaciones" class="waves-effect waves-light btn" style="width: 80%"> Agregar edificacion </button>
                                             </div>
                                             <div class="col s6">
-                                                <button id="clean-edificaciones" 
-                                                        class="waves-effect red btn"
-                                                        style="width: 80%"
-                                                        > Limpiar campos </button>
-                                                        
+                                                <button id="clean-edificaciones" class="waves-effect red btn" style="width: 80%"> Limpiar campos </button>
+
                                             </div>
                                         </div>
 
@@ -744,27 +739,136 @@
 
 
         $('#cotizar').click(function(event) {
+            var m2 = [];
+            var direccions = [];
+            var estados = [];
+            var municipios = [];
+            var areasPbs = [];
+            var numeroNivelesA = [];
+            var codigosPostalesA = [];
+
             var edificacionElem = document.getElementsByName("edificacion");
             var proyectosElem = document.getElementsByName("acheckbox[]");
 
-            if(edificaciones.length > 0) {
+            var areaNivel = document.getElementById('areaNp');
+            var direccionElem = document.getElementById('dirUb');
+            var areaPbElem = document.getElementById('areaPb');
+            var numeroNiveles = document.getElementById('numNiv');
+            var estadosElem = document.getElementById('jmr_contacto_estado');
+            var municipiosElem = document.getElementById('jmr_contacto_municipio');
+            var codigoPostalElem = document.getElementById('dirCp');
 
-                edificacionElem.forEach( (edificacion, index) => {
-                    if(index === (edificaciones[0].edificacion - 1)) {
+            var m2Elems = document.getElementsByName('longitud');
+            var direccionElems = document.getElementsByName('direcciones');
+            var codigosPostales = document.getElementsByName('codigosPostales');
+            var areasPb = document.getElementsByName('areasPb');
+            var numeroNivs = document.getElementsByName('numeroNivs');
+            var selectEstados = document.getElementsByName('selectEstados');
+            var selectMunicipios = document.getElementsByName('selectMunicipios');
+
+            if (edificaciones.length > 0) {
+
+                edificacionElem.forEach((edificacion, index) => {
+                    if (index === (edificaciones[0].edificacion - 1)) {
                         edificacion.checked = true;
                     }
                 });
-    
-                proyectosElem.forEach( proy => {
-                    edificaciones[0].proyectos.forEach( lProy => {
-                        if(lProy === proy.value) {
+
+                proyectosElem.forEach(proy => {
+                    edificaciones[0].proyectos.forEach(lProy => {
+                        if (lProy === proy.value) {
                             proy.checked = true;
                         }
                     });
                 });
 
                 document.querySelector('#clean-edificaciones').disabled = false;
+
             }
+
+            if (changeRules) {
+
+                areaNivel.value = "-";
+                direccionElem.value = "-";
+                areaPbElem.value = "-";
+                numeroNiveles.value = "-";
+                codigoPostalElem.value = "-";
+
+                m2Elems.forEach(mElem => {
+                    m2.push(parseInt(mElem.value, 10));
+                });
+
+                direccionElems.forEach(dirElem => {
+                    direccions.push(dirElem.value);
+                });
+
+                for (var i = 0; i < selectEstados.length; i++) {
+                    estados.push(selectEstados[i].value);
+                }
+
+                for (var i = 0; i < selectMunicipios.length; i++) {
+                    municipios.push(selectMunicipios[i].value);
+                }
+
+                areasPb.forEach(areaPb => {
+                    areasPbs.push(parseInt(areaPb.value, 10));
+                });
+
+                numeroNivs.forEach(numeroNiv => {
+                    numeroNivelesA.push(parseInt(numeroNiv.value, 10));
+                });
+
+                codigosPostales.forEach(codigoPostal => {
+                    codigosPostalesA.push(parseInt(codigoPostal.value, 10));
+                });
+
+            } else {
+                m2Elems.forEach(mElem => {
+                    mElem.value = areaNivel.value;
+                    m2.push(parseInt(areaNivel.value, 10));
+                });
+
+                direccionElems.forEach(dirElem => {
+                    dirElem.value = direccionElem.value;
+                    direccions.push(direccionElem.value);
+                });
+
+                for (var i = 0; i < selectEstados.length; i++) {
+                    estados.push(estadosElem.value);
+                }
+
+                for (var i = 0; i < selectMunicipios.length; i++) {
+                    municipios.push(municipiosElem.value);
+                }
+
+
+                areasPb.forEach(areaPb => {
+                    areaPb.value = areaPbElem.value;
+                    areasPbs.push(parseInt(areaPbElem.value, 10));
+                });
+
+                numeroNivs.forEach(numeroNiv => {
+                    numeroNiv.value = numeroNiveles.value;
+                    numeroNivelesA.push(parseInt(numeroNiveles.value, 10));
+                });
+
+                codigosPostales.forEach(codigoPostal => {
+                    codigoPostal.value = codigoPostalElem.value;
+                    codigosPostalesA.push(parseInt(codigoPostalElem.value, 10));
+                });
+
+            }
+
+            edificaciones.forEach((edificacion, index) => {
+                edificacion.areaNiv = m2[index];
+                edificacion.direccion = direccions[index];
+                edificacion.areaPb = areasPbs[index];
+                edificacion.numeroNiv = numeroNivelesA[index];
+                edificacion.estado = estados[index];
+                edificacion.municipio = municipios[index];
+                edificacion.codigoPostal = codigosPostalesA[index];
+            });
+            console.log(edificaciones);
         });
     });
 
@@ -803,8 +907,6 @@
     }
 </script>
 
-
 <script src="./js/index.js"></script>
-
 
 </html>

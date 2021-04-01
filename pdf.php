@@ -69,12 +69,15 @@ foreach($edificaciones as $keyE => $edificacion) {
       $posn = 78;
    }
 
-   $pdf->SetXY(20,$posn);
-   $pdf->SetFont('Times','B',12);
+   $pdf->SetXY(20, $posn);
+   $pdf->SetFont('Times', 'B', 12);
    $pdf->Cell(20, 8, "Edificacion #$numEdificacion ", 0, 'L');
-   $pdf->SetFont('Times','',12);
+   $pdf->SetFont('Times', '', 12);
    $posn = $posn + 10;
-   $pdf->SetXY(20,$posn);
+   $pdf->SetXY(20, $posn);
+   $areaTotal =  $edificacion["areaPb"] + ($edificacion["areaNiv"] * $edificacion["numeroNiv"]); // (AreaSot * NumSot);
+   $ciudad = $edificacion["municipio"];
+   $estado = $edificacion["estado"];
    $pdf->MultiCell(170,5,utf8_decode("Propuesta  para  la  elaboración de $proyectos de $tempEdificacion en $ciudad Estado de $estado con área techada de $areaTotal m2."));
    $posn= $posn + 20;
    foreach($edificacion["proyectos"] as $keyP => $proyecto) {

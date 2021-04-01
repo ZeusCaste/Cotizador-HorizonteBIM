@@ -125,12 +125,19 @@ $(document).ready(function () {
             FactorTie3 = parseFloat(document.getElementById("f3T").value);
 
 
-            AreaTot = AreaPB + (AreaNiv * NumeroNiv) + (AreaSot * NumSot);
+            //AreaTot = AreaPB + (AreaNiv * NumeroNiv) + (AreaSot * NumSot);
+            var AreaTot;
 
             // TODO
 
             edificaciones.forEach((edificacion, index) => {
 
+                if (changeRules) {
+                    AreaTot = edificacion.areaPb + (edificacion.areaNiv * edificacion.numeroNiv) + (AreaSot * NumSot);
+                    console.log(AreaTot);
+                } else {
+                    AreaTot = AreaPB + (AreaNiv * NumeroNiv) + (AreaSot * NumSot);
+                }
 
                 var ResTabulador = [];
                 Importe[index] = new Array();
@@ -225,13 +232,18 @@ $(document).ready(function () {
 
                 if (edificacion.proyectos.length == 1) {
 
-                    Texto = "<div class='s12'>" + "<p><b>Edificacion #" + (index + 1) + ": </b>" + edificacion.proyectos[0] + " de tipo " + Aedif[edificacion.edificacion - 1] + " en " + Ciudad + ", con un área total de " + AreaTot + " m2." + "</p></div>";
+                    var areaTot = edificacion.areaPb + (edificacion.areaNiv * edificacion.numeroNiv) + (AreaSot * NumSot);
+
+                    Texto = "<div class='s12'>" + "<p><b>Edificacion #" + (index + 1) + ": </b>" + edificacion.proyectos[0] + " de tipo " + Aedif[edificacion.edificacion - 1]  + " en " + Ciudad + " Edo. de " + Estado + ", con un área total de " + AreaTot + " m<sup>2</sup>." + "</p></div>";
                     Texto2 = "<div class='12'><b>" + "El importe de la presente propuesta es de $" + ImportesTotales[index].toFixed(2) + ", sin incluir el I. V. A." + "</b></div>";
                     Texto3 = "<div class='s12'>" + "Tiempo de entrega estimado por proyecto: " + TiemposEjecSub[index] + " Semanas";
                     Texto4 = "<div class='12'><b>" + "El tiempo total estimado de ejecución es de: " + TiemposEjecT[index] + " Semanas </b></div> <hr>";
                     contentbox.innerHTML += Texto + Texto2 + Texto3 + Texto4;
     
                 } else {
+
+                    var areaTot = edificacion.areaPb + (edificacion.areaNiv * edificacion.numeroNiv) + (AreaSot * NumSot);
+
                     firstText = "<div class='s12'><b>Edificacion #" + (index + 1) + ": </b></div>"
                     contentbox.innerHTML += firstText;
                     Textop = '';
@@ -279,7 +291,8 @@ $(document).ready(function () {
                         importesTotales: ImportesTotales,
                         importes: Importe,
                         tiemposEjecT: TiemposEjecT,
-                        tiemposEjecSub: TiemposEjecSub
+                        tiemposEjecSub: TiemposEjecSub,
+                        changeRules
                     }
                 }).done(function (data) {
                 testsub();
@@ -343,6 +356,7 @@ $(document).ready(function () {
 });
 
 var edificaciones = [];
+var changeRules = false;
 
 initDomEdificacion();
 
@@ -401,6 +415,156 @@ function initDomEdificacion() {
             document.querySelector('#clean-edificaciones').disabled = !verifyEdificacion(1);
         })
     });
+
+    var changeRulesElem = document.getElementById('change');
+
+
+    changeRulesElem.addEventListener("change", function (event) {
+
+
+       
+        var areaNivel = document.getElementById('areaNp');
+        var direccionElem = document.getElementById('dirUb');
+        var areaPbElem = document.getElementById('areaPb');
+        var numeroNiveles = document.getElementById('numNiv');  
+        var estadosElem = document.getElementById('jmr_contacto_estado');
+        var municipiosElem = document.getElementById('jmr_contacto_municipio');
+        var codigoPostalElem = document.getElementById('dirCp');
+
+
+        var m2Elems = document.getElementsByName('longitud');
+        var direccionElems = document.getElementsByName('direcciones');
+
+        var selectEstados = document.getElementsByName('selectEstados');
+        var selectMunicipios = document.getElementsByName('selectMunicipios');
+
+        var codigosPostales = document.getElementsByName('codigosPostales');
+        var areasPb = document.getElementsByName('areasPb');
+        var numeroNivs = document.getElementsByName('numeroNivs');
+
+
+        if (!changeRules) {
+
+            areaNivel.value = "";
+            direccionElem.value = "";
+            areaPbElem.value = "";
+            numeroNiveles.value = "";
+            codigoPostalElem.value = "";
+            areaNivel.placeholder = "Introduce el valor en la edificación";
+            direccionElem.placeholder = "Introduce el valor en la edificación";
+            areaPbElem.placeholder = "Introduce el valor en la edificación";
+            numeroNiveles.placeholder = "Introduce el valor en la edificación";
+            codigoPostalElem.placeholder = "Introduce el valor en la edificación";
+            
+            
+
+            areaNivel.disabled = true;
+            direccionElem.disabled = true;
+            areaPbElem.disabled = true;
+            numeroNiveles.disabled = true;
+            codigoPostalElem.disabled = true;
+            estadosElem.disabled = true;
+            municipiosElem.disabled = true;
+
+            m2Elems.forEach(mElem => {
+                mElem.placeholder = "3400";
+                mElem.disabled = false;
+            });
+
+            direccionElems.forEach(dirElem => {
+                dirElem.placeholder = "Calle 6 No. 517, Col.";
+                dirElem.disabled = false;
+            });
+
+            selectEstados.forEach(selectEstado => {
+                selectEstado.disabled = false;
+            });
+
+            selectMunicipios.forEach(selectMunicipio => {
+                selectMunicipio.disabled = false;
+            });
+
+            codigosPostales.forEach(codigoPostal => {
+                codigoPostal.placeholder = "0123"
+                codigoPostal.disabled = false;
+            });
+
+            areasPb.forEach(areaPb => {
+                areaPb.placeholder = "123";
+                areaPb.disabled = false;
+            });
+
+            numeroNivs.forEach(numeroNiv => {
+                numeroNiv.placeholder = "2";
+                numeroNiv.disabled = false;
+            });
+
+
+        } else {
+            areaNivel.placeholder = "3400";
+            direccionElem.placeholder = "Calle 6 No. 517, Col.";
+            areaPbElem.placeholder = "123";
+            numeroNiveles.placeholder = "2";
+            codigoPostalElem.placeholder = "0123";
+
+            areaNivel.value = "";
+            direccionElem.value = "";
+            areaPbElem.value = "";
+            numeroNiveles.value = "";
+            codigoPostalElem.value = "";
+        
+
+            m2Elems.forEach(mElem => {
+                mElem.value = "";
+                mElem.placeholder = "Por ahora es un valor único";
+                mElem.disabled = true;
+            });
+
+            direccionElems.forEach(dirElem => {
+                dirElem.value = "";
+                dirElem.placeholder = "Por ahora es un valor único";
+                dirElem.disabled = true;
+            });
+
+             selectEstados.forEach(selectEstado => {
+                selectEstado.disabled = true;
+            });
+
+            selectMunicipios.forEach(selectMunicipio => {
+                selectMunicipio.disabled = true;
+            });
+
+            codigosPostales.forEach(codigoPostal => {
+                codigoPostal.value = "";
+                codigoPostal.placeholder = "Por ahora es un valor único"
+                codigoPostal.disabled = true;
+            });
+
+            areasPb.forEach(areaPb => {
+                areaPb.value = "";
+                areaPb.placeholder = "Por ahora es un valor único";
+                areaPb.disabled = true;
+            });
+
+            numeroNivs.forEach(numeroNiv => {
+                numeroNiv.value = "";
+                numeroNiv.placeholder = "Por ahora es un valor único";
+                numeroNiv.disabled = true;
+            });
+
+            areaNivel.disabled = false;
+            direccionElem.disabled = false;
+            areaPbElem.disabled = false;
+            numeroNiveles.disabled = false;
+            codigoPostalElem.disabled = false;
+            estadosElem.disabled = false;
+            municipiosElem.disabled = false;
+        }
+
+        changeRules = !changeRules;
+
+    });
+
 }
 
 function addEdificacion() {
@@ -411,9 +575,179 @@ function addEdificacion() {
         var name = `Edificacion #${edificaciones.length}`
         var pos = edificaciones.length - 1;
 
+
         var container = document.querySelector('#edificaciones');
+        var formValidatta = document.querySelector('#nuevaE');
+
+
         var div = document.createElement('div');
         var button = document.createElement('button');
+
+        
+    
+        var divInputs = document.createElement('div');
+        var spacing = document.createElement('h5');
+        spacing.textContent = " "
+        var lineBreaker = document.createElement('br');
+
+
+        var divM2 = document.createElement('div');
+        var divDireccion = document.createElement('div');
+        var divEstados = document.createElement('div');
+        var divMunicipios = document.createElement('div');
+        var divCp = document.createElement('div');
+        var divAreaPb = document.createElement('div');
+        var divNumeroNiv = document.createElement('div');
+
+
+        var selectEstados = document.createElement('select');
+        selectEstados.setAttribute('id', `selectEstados-${edificaciones.length}`)
+        selectEstados.setAttribute('name', 'selectEstados');
+        selectEstados.setAttribute("required", "");
+        selectEstados.style.cssText = 'display: block;'
+        if (!changeRules) {
+            selectEstados.disabled = true;
+        }
+        var labelEstados = document.createElement('label');
+        labelEstados.innerHTML = 'Estado'
+        divEstados.appendChild(labelEstados);
+        divEstados.appendChild(selectEstados);
+
+        var selectMunicipios = document.createElement('select');
+        selectMunicipios.setAttribute('id', `selectMunicipios-${edificaciones.length}`);
+        selectMunicipios.setAttribute('name', 'selectMunicipios');
+        selectMunicipios.setAttribute("required", "");
+        selectMunicipios.style.cssText = 'display: block;'
+         if (!changeRules) {
+            selectMunicipios.disabled = true;
+        }
+        var labelMunicipios = document.createElement('label');
+        labelMunicipios.innerHTML = 'Municipio'
+        divMunicipios.appendChild(labelMunicipios);
+        divMunicipios.appendChild(selectMunicipios);
+
+        var labelCp = document.createElement('label');
+        labelCp.innerHTML = 'Codigo postal'
+        divCp.appendChild(labelCp);
+        var inputCp = document.createElement('input');
+        inputCp.setAttribute("type", "number");
+        inputCp.setAttribute("name", "codigosPostales");
+        inputCp.setAttribute("placeholder", "0142");
+        inputCp.setAttribute("required", "");
+        if (!changeRules) {
+            inputCp.disabled = true;
+            inputCp.setAttribute("placeholder", "Por ahora es un valor único");
+        }
+        divCp.appendChild(inputCp);
+
+        var labelAreaPb = document.createElement('label');
+        labelAreaPb.innerHTML = 'Área de planta baja (m2)'
+        divAreaPb.appendChild(labelAreaPb);
+        var inputAreaPb = document.createElement('input');
+        inputAreaPb.setAttribute("type", "number");
+        inputAreaPb.setAttribute("name", "areasPb");
+        inputAreaPb.setAttribute("placeholder", "123");
+        inputAreaPb.setAttribute("required", "");
+        if (!changeRules) {
+            inputAreaPb.disabled = true;
+            inputAreaPb.setAttribute("placeholder", "Por ahora es un valor único");
+        }
+        divAreaPb.appendChild(inputAreaPb);
+
+
+        var labelNumeroNiv = document.createElement('label');
+        labelNumeroNiv.innerHTML = 'Número de niveles'
+        divNumeroNiv.appendChild(labelNumeroNiv);
+        var inputNumeroNiv = document.createElement('input');
+        inputNumeroNiv.setAttribute("type", "number");
+        inputNumeroNiv.setAttribute("name", "numeroNivs");
+        inputNumeroNiv.setAttribute("placeholder", "2");
+        inputNumeroNiv.setAttribute("required", "");
+        if (!changeRules) {
+            inputNumeroNiv.disabled = true;
+            inputNumeroNiv.setAttribute("placeholder", "Por ahora es un valor único");
+        }
+        divNumeroNiv.appendChild(inputNumeroNiv);
+
+
+        $(document).ready(function () {
+            var target = edificaciones.length;
+            $.ajax({
+                type: "POST",
+                url: "procesar-estados.php",
+                data: {
+                    estados: "Mexico"
+                }
+            }).done(function (data) {
+                $(`#selectEstados-${target}`).html(data);
+            });
+
+            $(`#selectEstados-${target}`).change(function() {
+                var estado = $(`#selectEstados-${target} option:selected`).val();
+                $.ajax({
+                    type: "POST",
+                    url: "procesar-estados.php",
+                    data: {
+                        municipios: estado
+                    }
+                }).done(function(data) {
+                    $(`#selectMunicipios-${target}`).html(data);
+                });
+            });
+        });
+
+
+        // for (var i = 0; i < estadosOptions.length; i++) {
+        //     var option = document.createElement("option");
+        //     option.value = estadosOptions[i].outerText;
+        //     option.text = estadosOptions[i].outerText;
+        //     selectEstados.appendChild(option);
+        // }
+
+
+
+        var labelM2 = document.createElement('label');
+        labelM2.innerHTML = 'Área del nivel tipo (m2)'
+        spacing.appendChild(labelM2)
+        divM2.appendChild(spacing);
+
+        
+
+        var inputM = document.createElement('input');
+        inputM.setAttribute("type", "number");
+        inputM.setAttribute("name", "longitud");
+        inputM.setAttribute("placeholder", "3400");
+        inputM.setAttribute("required", "");
+        if (!changeRules) {
+            inputM.disabled = true;
+            inputM.setAttribute("placeholder", "Por ahora es un valor único");
+        }
+        divM2.appendChild(inputM);
+
+
+        var labelDir = document.createElement('label');
+        labelDir.innerHTML = 'Ubicación del proyecto'
+        divDireccion.appendChild(labelDir);
+
+        var inputDir = document.createElement('input');
+        inputDir.setAttribute("type", "text");
+        inputDir.setAttribute("name", "direcciones");
+        inputDir.setAttribute("placeholder", "  Call 5 No. 234 Col.");
+        inputDir.setAttribute("required", "");
+        if (!changeRules) {
+            inputDir.disabled = true;
+            inputDir.setAttribute("placeholder", "Por ahora es un valor único");
+        }
+        divDireccion.appendChild(inputDir);
+
+        divInputs.appendChild(divM2);
+        divInputs.appendChild(divAreaPb);
+        divInputs.appendChild(divNumeroNiv);
+        divInputs.appendChild(divDireccion);
+        divInputs.appendChild(divEstados);
+        divInputs.appendChild(divMunicipios);
+        divInputs.appendChild(divCp);
+
 
         div.classList.add('col', 's6');
 
@@ -422,11 +756,20 @@ function addEdificacion() {
         button.classList.add('waves-effect', 'waves-light', 'btn', 'col', 's6');
         button.style.cssText = 'width: 80%;'
         div.appendChild(button)
+
+        
+        div.appendChild(lineBreaker);
+        div.appendChild(divInputs);
+        
+
+
         container.appendChild(div);
         button.addEventListener('click', function (event) {
             event.preventDefault();
             completeEdificaciones(pos);
         });
+
+        formValidatta.appendChild(container);
 
         document.querySelector('#add-edificaciones').disabled = true;
         document.querySelector('#clean-edificaciones').disabled = true;
@@ -467,7 +810,14 @@ function saveEdificacion() {
 
     var tempEdificacion = {
         edificacion: '',
-        proyectos: []
+        proyectos: [],
+        areaNiv: 0,
+        areaPb: 0,
+        numeroNiv: 0,
+        direccion: '',
+        estado: '',
+        municipio: '',
+        codigoPostal: 0,
     };
 
     edificacionElem.forEach( (input, index) => {
