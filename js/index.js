@@ -234,7 +234,7 @@ $(document).ready(function () {
 
                     var areaTot = edificacion.areaPb + (edificacion.areaNiv * edificacion.numeroNiv) + (AreaSot * NumSot);
 
-                    Texto = "<div class='s12'>" + "<p><b>Edificacion #" + (index + 1) + ": </b>" + edificacion.proyectos[0] + " de tipo " + Aedif[edificacion.edificacion - 1]  + " en " + Ciudad + " Edo. de " + Estado + ", con un área total de " + AreaTot + " m<sup>2</sup>." + "</p></div>";
+                    Texto = "<div class='s12'>" + "<p><b>Edificacion #" + (index + 1) + ": </b>" + edificacion.proyectos[0] + " de tipo " + Aedif[edificacion.edificacion - 1]  + " en " + Ciudad + " Edo. de " + Estado + ", con un área total de " + areaTot + " m<sup>2</sup>." + "</p></div>";
                     Texto2 = "<div class='12'><b>" + "El importe de la presente propuesta es de $" + ImportesTotales[index].toFixed(2) + ", sin incluir el I. V. A." + "</b></div>";
                     Texto3 = "<div class='s12'>" + "Tiempo de entrega estimado por proyecto: " + TiemposEjecSub[index] + " Semanas";
                     Texto4 = "<div class='12'><b>" + "El tiempo total estimado de ejecución es de: " + TiemposEjecT[index] + " Semanas </b></div> <hr>";
@@ -254,7 +254,7 @@ $(document).ready(function () {
                         Textoim += "<div class='s12'>" + "     -El importe del proyecto de " + edificacion.proyectos[i] + " es de $" + Importe[index][i].toFixed(2) + ", sin incluir el I. V. A." + "</div>";
     
                     }
-                    textoR = "<div class='s12'>" + "De tipo " + Aedif[edificacion.edificacion - 1] + " en " + Ciudad + " Edo. de " + Estado + ", con un área total de " + AreaTot + " m<sup>2</sup>." + "</div>";
+                    textoR = "<div class='s12'>" + "De tipo " + Aedif[edificacion.edificacion - 1] + " en " + edificacion.municipio + " Edo. de " + edificacion.estado + ", con un área total de " + areaTot + " m<sup>2</sup>." + "</div>";
                     Texto2 = "<div class='s12'><b>" + "El importe de la presente propuesta es de $" + ImportesTotales[index].toFixed(2) + ", sin incluir el I. V. A." + "</b></div>";
                     Texto3 = "<div class='s12'>" + "Número de proyectos: " + edificacion.proyectos.length + ", tiempo de entrega estimado por proyecto: " + TiemposEjecSub[index] + " Semanas";
                     Texto4 = "<div class='12'><b>" + "El tiempo total estimado de ejecución es de: " + TiemposEjecT[index] + " Semanas </b></div> <hr>";
