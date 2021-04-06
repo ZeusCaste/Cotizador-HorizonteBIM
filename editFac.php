@@ -9,9 +9,11 @@
     $f1T = $_POST['factor1Tiempo'];  
     $f2T = $_POST['factor2Tiempo'];  
     $f3T = $_POST['factor3Tiempo']; 
+    $fC = $_POST['factorComision'];
+    $fCC = $_POST['factorComCoordinador'];
 
     $sql_fac = "UPDATE factores SET FactorRedProyecto = '$f1E', FactorMerProyecto = '$f2E', FactorSitEmProyecto = '$f3E',
-                FactorRedTiempo = '$f1T', FactorEficTiempo = '$f2T', FactorCarTiempo = '$f3T' WHERE ID = '1'  ";
+                FactorRedTiempo = '$f1T', FactorEficTiempo = '$f2T', FactorCarTiempo = '$f3T', factorcomision = '$fC', factorcomcoordinador = '$fCC' WHERE ID = '1'  ";
     //$result = mysqli_query($db,$sql_fac);
 
     //$count = mysqli_num_rows($result);

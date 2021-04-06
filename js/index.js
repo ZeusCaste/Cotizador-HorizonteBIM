@@ -124,6 +124,9 @@ $(document).ready(function () {
             FactorTie2 = parseFloat(document.getElementById("f2T").value);
             FactorTie3 = parseFloat(document.getElementById("f3T").value);
 
+            FactorCom = parseFloat(document.getElementById("fC").value);
+            FactorComCoor = parseFloat(document.getElementById("fCC").value);
+
 
             //AreaTot = AreaPB + (AreaNiv * NumeroNiv) + (AreaSot * NumSot);
             var AreaTot;
@@ -188,7 +191,7 @@ $(document).ready(function () {
 
     
                     var aux = ResTabulador[j].toFixed(5);
-                    Importe[index].push(ImporteFac23(valueEdif[parseInt(edificacion.edificacion)], AreaTot, aux, Factor2, Factor3));
+                    Importe[index].push(ImporteFac23(valueEdif[parseInt(edificacion.edificacion)], AreaTot, aux, Factor2, Factor3, FactorCom, FactorComCoor));
                     ;
                 }
 
@@ -368,9 +371,9 @@ function TabuladorFac1(Area, exp, con, Factor1) {
     return ResTabulador1;
 }
 
-function ImporteFac23(edif, areat, ResT, Factor2, Factor3) {
+function ImporteFac23(edif, areat, ResT, Factor2, Factor3, FactorCom, FactorComCoor) {
 
-    return edif * areat * ResT * Factor2 * Factor3;
+    return edif * areat * ResT * Factor2 * Factor3 * FactorCom * FactorComCoor;
 }
 
 function myFunction(test12) {

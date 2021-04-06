@@ -11,7 +11,9 @@
         $f3E = $row['factorsitemproyecto']; 
         $f1T = $row['factorredtiempo'];  
         $f2T = $row['factorefictiempo'];  
-        $f3T = $row['factorcartiempo'];  
+        $f3T = $row['factorcartiempo'];
+        $fC = $row['factorcomision'];
+        $fCC = $row['factorcomcoordinador'];
     }
 ?>
 
@@ -422,6 +424,17 @@
                                         <label>Factor Situación de la Empresa</label>
                                     </div>               
                                 </div>
+                                <div class="row" style="display: none">
+                                    <div class="input-field col s12 m4 l4">
+                                        <input value="<?php echo $fC; ?>" id="fC" type="text" name="factorComision">
+                                        <label>Factor Comision</label>
+                                    </div>
+                                    <div class="input-field col s12 m4 l4">
+                                        <input value="<?php echo $fCC; ?>" id="fCC" type="text" name="factorComCoordinador">
+                                        <label>Factor Comision Coordinador</label>
+                                    </div>             
+                                </div>
+
                                 <button id="cotizar" class="btn waves-effect waves-light" type="submit" name="action">Cotizar
                                 <i class="fas fa-check-double"></i></button>
                             </div>
