@@ -153,7 +153,7 @@ $pdf->MultiCell(170,5,utf8_decode('Las revisiones, se harán a petición del cli
 $pdf->AddPAge();
 
 $pdf->SetXY(20, 45);
-$pdf->MultiCell(170,5,utf8_decode('Los depósitos, se deberán de abonar a la siguiente HSBC No. 6419640200 CLAVE INTERBANCARIA 021180064196402994 a nombre de MOISÉS BARRIENTOS LOZANO.'));
+$pdf->MultiCell(170,5,utf8_decode('Los depósitos, se deberán de abonar a la siguiente cuenta Inversión Enlace Personal No. 0312419000 CLAVE INTERBANCARIA 072180003124190000 Sucursal: 0679 a nombre de MOISÉS BARRIENTOS LOZANO.'));
 
 //****
 $pdf->SetXY(95, 180);
@@ -193,13 +193,13 @@ try {
         );                            //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('zeuscaste@gmail.com', 'Horizonte BIM');
+    $mail->setFrom('zeuscaste@gmail.com', 'BIM Technology Solutions');
     $mail->addAddress($email);     //Add a recipien
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = "Cotizacion Horizonte BIM";
-    $mail->Body = "<b>Por este medio le hacemos llegar la cotización solicitada de acuerdo a los datos ingresados en nuestro cotizador virtual. </b> <br><b>Gracias por utilizar Cotizador Horizonte BIM.</b></br>";
+    $mail->Subject = "BIM Technology Solutions";
+    $mail->Body = "<b>Por este medio le hacemos llegar la cotización solicitada de acuerdo a los datos ingresados en nuestro cotizador virtual. </b> <br><b>Gracias por utilizar Cotizador BIM Technology Solutions.</b></br>";
 
     // definiendo el adjunto 
     $mail->AddStringAttachment($doc, 'CotizacionBIM.pdf', 'base64');
