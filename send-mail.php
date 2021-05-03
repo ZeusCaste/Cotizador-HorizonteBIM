@@ -9,7 +9,7 @@ $telefono=$_POST["numT"];
 setlocale(LC_ALL,"es_MX");
 $fecha = date("m/d/Y");
 
-$sql_fac = "INSERT into cotizaciones ( nombreus, correous, numerous, fecha, hora) VALUES ('$nombre','$email','$telefono','$fecha')";
+$sql_fac = "INSERT into cotizaciones ( nombreus, correous, numerous, fecha) VALUES ('$nombre','$email','$telefono','$fecha')";
 $result = pg_query($conexion,$sql_fac) or die("Error en insert: ".pg_last_error());
 
 if($result == true) {
