@@ -1,7 +1,27 @@
 <?php
 
+include('config.php');
+
 $nombre= $_POST["nombreC"]; 
 $email=$_POST["email"];
+$telefono=$_POST["numT"];
+
+setlocale(LC_ALL,"es_MX");
+$fecha = date("m/d/Y");
+$hora = date("H:i:s");
+
+$sql_fac = "INSERT into cotizaciones ( nombreus, correous, numerous, fecha, hora) VALUES ('$nombre','$email','$telefono','$fecha', '$hora')";
+$result = pg_query($conexion,$sql_fac) or die("Error en insert: ".pg_last_error());
+
+if($result == true) {
+  echo"<script type='text/javascript'>
+    alert('¡Se guardo su cotizacion correctamente!');
+    </script>";
+}else {
+  echo"<script type='text/javascript'>
+    alert('Ocurrió un error al guardar su cotizacion');
+    </script>";
+}
 
 ?>
 

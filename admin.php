@@ -1,7 +1,7 @@
 <?php
    include('session.php');
    $sql_fac = "SELECT * FROM factores";
-    $result = pg_query($conexion,$sql_fac) or die("Error en select: ".pg_last_error());
+    $result = pg_query($conexion,$sql_fac) or die("Error en select factores: ".pg_last_error());
 
    //se despliega el resultado
    while ($row = pg_fetch_assoc($result)){
@@ -16,6 +16,9 @@
     }
 
     $respuesta = $_GET["res"];
+
+    $sql_fac2 = "SELECT * FROM cotizaciones";
+    $result2 = pg_query($conexion,$sql_fac2) or die("Error en select cotizaciones: ".pg_last_error());
 
     /*if($respuesta == "true"){
         echo"<script type='text/javascript'>
@@ -133,6 +136,32 @@
             </form>
             </div>
         </div>
+        <div></div>
+        <div><h4>Historial de cotizaciones</h4></div>
+        <table border="1">
+            <tr>
+                <td>ID</td>
+                <td>Nombre Usuario</td>
+                <td>Correo electrónico</td>
+                <td>Teléfono de contacto</td>
+                <td>Fecha</td>
+            </tr>
+            
+                <?php
+                    while ($mostrar = pg_fetch_assoc($result2)){
+                ?>
+            <tr>
+                <td><?php echo $mostrar['idcotizacion']; ?></td>
+                <td><?php echo $mostrar['nombreus']; ?></td>
+                <td><?php echo $mostrar['correous']; ?></td>
+                <td><?php echo $mostrar['numerous']; ?></td>
+                <td><?php echo $mostrar['fecha']; ?></td>
+            </tr>
+                <?php 
+                    }
+                ?>
+            
+        </table>
         </div>
         <?php if($respuesta == "true"){
                     echo"<script type='text/javascript'>

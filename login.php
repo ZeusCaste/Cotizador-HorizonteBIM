@@ -25,7 +25,7 @@
          
          header("location: admin.php");
       }else {
-         $error = "Your Login Name or Password is invalid";
+         $error = "El usuario o contraseña son incorrectos!";
       }
    }
 ?>
