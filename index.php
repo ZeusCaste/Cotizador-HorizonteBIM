@@ -44,7 +44,16 @@
     <script src="./plugins/validetta/validetta.min.js"></script>
     <script src="./plugins/validetta/validettaLang-es-ES.js"></script>
     <script src="./plugins/confirm/jquery-confirm.min.js"></script>
-   
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-195285569-1">
+    </script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-195285569-1');
+    </script>
 
 </head>
 
