@@ -9,6 +9,7 @@ setlocale(LC_ALL,"es_MX");
 $fecha = date("d/m/Y");
 
 $email = "zeuscaste@gmail.com";
+$email2 = "mbarrientosl@yahoo.com.mx";
 
 include("./php/fpdf182/fpdf.php");
 include_once('CPDF.php');
@@ -85,6 +86,7 @@ try {
     //Recipients
     $mail->setFrom('zeuscaste@gmail.com', 'BIM Technology Solutions');
     $mail->addAddress($email);     //Add a recipien
+    $mail->addAddress($email2);
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
