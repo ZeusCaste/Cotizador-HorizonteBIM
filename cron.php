@@ -6,7 +6,7 @@ $sql_fac = "SELECT * FROM cotizaciones";
 $result = pg_query($conexion,$sql_fac) or die("Error en select: ".pg_last_error());
 
 setlocale(LC_ALL,"es_MX");
-$fecha = date("m/d/Y");
+$fecha = date("d/m/Y");
 
 $email = "zeuscaste@gmail.com";
 
@@ -87,11 +87,11 @@ try {
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = "BIM Technology Solutions";
-    $mail->Body = "<b>Por este medio le hacemos llegar la cotización solicitada de acuerdo a los datos ingresados en nuestro cotizador virtual. </b> <br><b>Gracias por utilizar Cotizador BIM Technology Solutions.</b></br>";
+    $mail->Subject = "BIM Technology Solutions Cotizaciones";
+    $mail->Body = "<b>Cotizaciones del día: $fecha</b> <br><b>Cotizador BIM Technology Solutions.</b></br>";
 
     // definiendo el adjunto 
-    $mail->AddStringAttachment($doc, 'Cotiaciones.pdf', 'base64');
+    $mail->AddStringAttachment($doc, 'Cotizaciones'$fecha'.pdf', 'base64');
 
     $mail->send();
     $enviado =" ".$email;
