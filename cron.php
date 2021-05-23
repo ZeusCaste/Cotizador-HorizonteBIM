@@ -34,19 +34,20 @@ $pdf->SetFont('Times', 'B', 12);
 $pdf->Cell(20, 8, "Historial de Cotizaciones", 0, 'L');
 $pdf->SetFont('Times', '', 12);
 //*****
-$pdf->SetXY(27, 85);
-$pdf->Cell(27, 8, utf8_decode('a)   Estructuración conforme a proyecto arquitectónico, sistemas y procedimientos constructivos'), 0, 'L');
-$pdf->SetXY(27, 95);
-$pdf->Cell(27, 8, utf8_decode('     acordados con el cliente.'), 0, 'L');
-$pdf->SetXY(27, 105);
-$pdf->Cell(27, 8, utf8_decode('b)     Pre-dimensionamiento de elementos estructurales de cimentación y estructura.'), 0, 'L');
-$pdf->SetXY(27, 115);
-$pdf->Cell(27, 8, utf8_decode('c)   Análisis estructural para determinar elementos mecánicos a los que serán sometidos los'), 0, 'L');
-$pdf->SetXY(27, 125);
-$pdf->Cell(27, 8, utf8_decode('       elementos estructurales.'), 0, 'L');
-$pdf->SetXY(27, 135);
-$pdf->Cell(27, 8, utf8_decode('d)   Diseño de todos y cada uno de los elementos estructurales y de la cimentación'), 0, 'L');
+$pdf->Ln(20);
+$pdf->Cell(25, 10, 'ID', 1, 0, 'C', 0);;
+$pdf->Cell(45, 10, 'Nombre', 1, 0, 'C', 0);;
+$pdf->Cell(45, 10, 'Email', 1, 0, 'C', 0);; 
+$pdf->Cell(45, 10, 'Teléfono', 1, 0, 'C', 0);; 
+$pdf->Cell(45, 10, 'Fecha', 1, 1, 'C', 0);; 
 
+while ($mostrar = pg_fetch_assoc($result)){
+    $pdf->Cell(25, 10, $mostrar['idcotizacion'], 1, 0, 'C', 0);;
+    $pdf->Cell(45, 10, $mostrar['nombreus'], 1, 0, 'C', 0);;
+    $pdf->Cell(45, 10, $mostrar['correous'], 1, 0, 'C', 0);; 
+    $pdf->Cell(45, 10, $mostrar['numerous'], 1, 0, 'C', 0);; 
+    $pdf->Cell(45, 10, $mostrar['fecha'], 1, 1, 'C', 0);;   
+}
 
 $doc = $pdf->Output('','S');
 
@@ -88,7 +89,7 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = "BIM Technology Solutions Cotizaciones";
-    $mail->Body = "<b>Cotizaciones del día: $fecha</b> <br><b>Cotizador BIM Technology Solutions.</b></br>";
+    $mail->Body = "<b>Reporte de Cotizaciones del día</b> <br><b>Cotizador BIM Technology Solutions.</b></br>";
 
     // definiendo el adjunto 
     $mail->AddStringAttachment($doc, 'Cotizaciones'$fecha'.pdf', 'base64');
