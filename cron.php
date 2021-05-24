@@ -35,18 +35,18 @@ $pdf->Cell(20, 8, "Historial de Cotizaciones", 0, 'L');
 $pdf->SetFont('Times', '', 12);
 //*****
 $pdf->Ln(20);
-$pdf->Cell(25, 10, 'ID', 1, 0, 'C', 0);;
-$pdf->Cell(45, 10, 'Nombre', 1, 0, 'C', 0);;
-$pdf->Cell(45, 10, 'Email', 1, 0, 'C', 0);; 
-$pdf->Cell(45, 10, 'Teléfono', 1, 0, 'C', 0);; 
-$pdf->Cell(45, 10, 'Fecha', 1, 1, 'C', 0);; 
+$pdf->Cell(25, 10, 'ID', 1, 0, 'C', 0);
+$pdf->Cell(45, 10, 'Nombre', 1, 0, 'C', 0);
+$pdf->Cell(45, 10, 'Email', 1, 0, 'C', 0);
+$pdf->Cell(45, 10, 'Teléfono', 1, 0, 'C', 0);
+$pdf->Cell(45, 10, 'Fecha', 1, 1, 'C', 0);
 
 while ($mostrar = pg_fetch_assoc($result)){
-    $pdf->Cell(25, 10, $mostrar['idcotizacion'], 1, 0, 'C', 0);;
-    $pdf->Cell(45, 10, $mostrar['nombreus'], 1, 0, 'C', 0);;
-    $pdf->Cell(45, 10, $mostrar['correous'], 1, 0, 'C', 0);; 
-    $pdf->Cell(45, 10, $mostrar['numerous'], 1, 0, 'C', 0);; 
-    $pdf->Cell(45, 10, $mostrar['fecha'], 1, 1, 'C', 0);;   
+    $pdf->Cell(25, 10, $mostrar['idcotizacion'], 1, 0, 'C', 0);
+    $pdf->Cell(45, 10, $mostrar['nombreus'], 1, 0, 'C', 0);
+    $pdf->Cell(45, 10, $mostrar['correous'], 1, 0, 'C', 0);
+    $pdf->Cell(45, 10, $mostrar['numerous'], 1, 0, 'C', 0);
+    $pdf->Cell(45, 10, $mostrar['fecha'], 1, 1, 'C', 0); 
 }
 
 $doc = $pdf->Output('','S');
