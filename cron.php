@@ -1,6 +1,8 @@
 <?php
 
 include('config.php');
+include("./php/fpdf182/fpdf.php");
+include_once('CPDF.php');
 
 $sql_fac = "SELECT * FROM cotizaciones";
 $result = pg_query($conexion,$sql_fac) or die("Error en select: ".pg_last_error());
@@ -10,9 +12,6 @@ $fecha = date("d/m/Y");
 
 $email = "zeuscaste@gmail.com";
 $email2 = "mbarrientosl@yahoo.com.mx";
-
-include("./php/fpdf182/fpdf.php");
-include_once('CPDF.php');
 
 $pdf = new PDF();
 $pdf->AddPage();
@@ -105,3 +104,9 @@ try {
 
 
 ?>
+
+<html>
+    <body>
+        <h1>Crons</h1>
+    </body>
+</html>
