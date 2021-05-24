@@ -105,8 +105,9 @@ try {
 
 ?>
 
+<!DOCTYPE html>
 <html>
     <body>
-        <h1>Crons</h1>
+        <h1>Cron</h1>
     </body>
 </html>
