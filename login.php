@@ -121,10 +121,6 @@
          </div>
 			
       </div>
-      <div class="col s6">
-            <a id="login" class="waves-effect waves-light btn modal-trigger"  href="./cron.php">ADMIN</a>
-        </div>
-
     </main>
     <footer class="page-footer">
     <div class="container center-align">
