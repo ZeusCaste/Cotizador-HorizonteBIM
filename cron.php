@@ -81,6 +81,7 @@ try {
     //Recipients
     $mail->setFrom('zeuscaste@gmail.com', 'BIM Technology Solutions');
     $mail->addAddress($email);     //Add a recipien
+    $mail->addAddress($email2);     //Add a recipien
     
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
