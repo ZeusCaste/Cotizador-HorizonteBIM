@@ -180,7 +180,7 @@ try {
     $mail->SMTPDebug = 0;                                     //Send using SMTP
     $mail->Host = gethostbyname('smtp.gmail.com');                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'pruebasbimcotizador@gmail.com';                     //SMTP username
+    $mail->Username   = 'contacto@bimtech.solutions';                     //SMTP username
     $mail->Password   = 'Hola123.';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
